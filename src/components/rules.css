@@ -1,0 +1,123 @@
+.rules-container {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.rules-container:hover {
+  background-color: #1a1a1a !important; /* Ensure background color remains the same on hover */
+}
+
+.faq-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.letter {
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: 'Kanit', sans-serif; /* Same initial font for all letters */
+  color: #a8ff00
+}
+
+/* F letter hover */
+.letter:nth-child(1):hover {
+  color: #FF6B6B;
+  transform: rotate(-10deg) scale(1.2);
+  font-family: 'Impact', fantasy;
+}
+
+/* A letter hover */
+.letter:nth-child(2):hover {
+  color: #4ECDC4;
+  transform: translateY(-10px) scale(1.2);
+  font-family: 'Comic Sans MS', cursive;
+}
+
+/* Q letter hover */
+.letter:nth-child(3):hover {
+  color: #FFE66D;
+  transform: rotate(10deg) scale(1.2);
+  font-family: 'Chalkduster', fantasy;
+}
+
+.faq-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.faq-section {
+  flex: 1;
+  max-width: 500px;
+}
+
+.faq-category {
+  font-size: 1.8rem;
+  color: #a8ff00;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #444;
+  padding: 10px 0;
+}
+
+.faq-question {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.faq-question:hover {
+  color: #a8ff00;
+}
+
+.faq-answer {
+  text-align: left;
+  font-size: 1rem;
+  padding: 0 10px;
+  background-color: #222;
+  margin-top: 5px;
+  border-radius: 5px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.faq-answer.open {
+  padding: 10px;
+  max-height: 500px;
+}
+
+.view-all-btn {
+  background-color: #a8ff00;
+  color: black;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px;
+  border-radius: 5px;
+}
+
+.view-all-btn:hover {
+  background-color: #88cc00;
+}

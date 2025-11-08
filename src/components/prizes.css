@@ -1,0 +1,266 @@
+.container {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  margin-bottom: 100px;
+  background: #1a1a1a;
+}
+
+.container h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.cards-container {
+  position: relative;
+  perspective: 800px;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  transform: translateX(-160px);
+}
+
+.card {
+  position: absolute;
+  height: 450px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background: #fff;
+  transition: transform 1s ease-out, opacity 0.5s ease-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform-origin: bottom center;
+  color: white;
+  transform: scale(0.75);
+  opacity: 0.5;
+}
+
+.card.active {
+  transform: translate(calc(var(--index) * 350px - 50%), 0) scale(1);
+  opacity: 1;
+}
+
+.first,
+.second,
+.third {
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
+}
+
+.second {
+  background: linear-gradient(135deg, #a8e063, #56ab2f);
+}
+
+.third {
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+}
+
+.amount {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.rank {
+  font-size: 3rem;
+}
+
+.position {
+  font-size: 2rem;
+  align-self: flex-end;
+}
+
+.first {
+  width: 400px;
+}
+
+.second {
+  width: 350px;
+  margin-right: 200px;
+}
+
+.third {
+  width: 300px;
+}
+
+.faq-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.letter {
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: Kanit, sans-serif;
+}
+
+.letter:nth-child(1):hover {
+  color: #FF6B6B;
+  transform: rotate(-10deg) scale(1.2);
+  font-family: 'Impact', fantasy;
+}
+
+.letter:nth-child(2):hover {
+  color: #4ECDC4;
+  transform: translateY(-10px) scale(1.2);
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.letter:nth-child(3):hover {
+  color: #FFE66D;
+  transform: rotate(10deg) scale(1.2);
+  font-family: 'Chalkduster', fantasy;
+}
+
+.letter:nth-child(4):hover {
+  color: #FF8C42;
+  transform: skewX(-10deg) scale(1.2);
+  font-family: 'Courier New', monospace;
+}
+
+.letter:nth-child(5):hover {
+  color: #9B59B6;
+  transform: scale(1.3);
+  font-family: 'Georgia', serif;
+}
+
+.letter:nth-child(6):hover {
+  color: #3498DB;
+  transform: translateX(10px) scale(1.2);
+  font-family: 'Verdana', sans-serif;
+}
+
+@media (max-width: 1024px) {
+  .cards-container {
+    max-width: 600px;
+    transform: translateX(-50px);
+  }
+
+  .card {
+    width: 240px;
+    height: 350px;
+  }
+
+  .card.active {
+    transform: translate(calc(var(--index) * 250px - 50px), 0) scale(1);
+  }
+
+  .amount,
+  .rank,
+  .position {
+    font-size: 2.3rem;
+  }
+
+  .position {
+    font-size: 1.8rem;
+  }
+
+  .second {
+    margin-right: 100px;
+  }
+}
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center cards vertically */
+    width: 100%; /* Full width to use the available space */
+    transform: none; /* Remove any transformations */
+    margin: 0 auto; /* Center container horizontally */
+    height: auto; /* Adjust height automatically based on content */
+    padding: 20px 0; /* Padding for aesthetic spacing */
+  }
+
+  .card {
+    position: static; /* Ensure cards are not absolutely positioned */
+    width: 80%; /* Suitable width for smaller devices */
+    margin: 20px 0; /* Space between cards */
+    height: auto; /* Auto height to fit content */
+    opacity: 1; /* Full opacity */
+    transition: none; /* No transitions on scroll */
+    display: flex; /* Flex layout for internal centering */
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    transform: none; /* Ensure no transform affects positioning */
+  }
+
+  .card.first {
+    order: -1; /* Winner card at the top */
+  }
+
+  .card.second {
+    order: 0; /* Second place follows */
+  }
+
+  .card.third {
+    order: 1; /* Third place at the bottom */
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Ensure vertical alignment */
+    width: 100%; /* Use full container width */
+    height: auto; /* Adjust height based on content */
+    transform: none;
+    margin: 0 auto; /* Center the container */
+    padding: 20px 0; /* Add padding to avoid touching the edges */
+  }
+
+  .card {
+    position: static;
+    width: 80%; /* Slightly reduce width for better spacing */
+    height: auto; /* Auto-adjust height */
+    margin: 20px 0; /* Increase space between cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1; /* Ensure full opacity */
+    transition: none; /* Disable any transitions */
+  }
+
+  .amount, .rank, .position {
+    font-size: 1.8rem; /* Adjust font size */
+    text-align: center; /* Ensure text is centered */
+  }
+
+  .amount {
+    margin-bottom: 10px; /* Space below the amount */
+  }
+
+  .rank {
+    margin-bottom: 5px; /* Space below the rank */
+  }
+
+  .position {
+    margin-bottom: 10px; /* Space below the position */
+  }
+
+  /* Ensure all cards are visible and centered when scrolling into view */
+  .container {
+    overflow: visible; /* Change or remove overflow properties if needed */
+    padding-top: 50px; /* Add padding on top for better spacing */
+    padding-bottom: 50px; /* Add padding at the bottom */
+  }
+
+  /* Disabling any scroll-triggered transformations or opacity changes */
+  .card.active, .card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
