@@ -95,7 +95,7 @@ const CalendarNumber = ({ number, label }) => (
 
 const Header = () => {
   const calculateTimeLeft = () => {
-    const difference = +new Date('2025-03-11T00:00:00') - +new Date();
+    const difference = +new Date('2026-03-11T00:00:00') - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {

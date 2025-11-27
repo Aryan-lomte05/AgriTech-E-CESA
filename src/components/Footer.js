@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone, FaArrowUp } from 'react-icons/fa';
-import './Footer.css';
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -25,63 +25,173 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer-container">
-      <div className="footer-content">
-        {/* Left Section - Quick Links */}
-        <div className="footer-section left">
-          <h2 className="footer-title">Quick Links</h2>
-          <div className="footer-links">
-            <a href="#about" onClick={() => scrollToSection('home')}>About</a>
-            <a href="#timeline" onClick={() => scrollToSection('timeline')}>Timeline</a>
-            <a href="#prizes" onClick={() => scrollToSection('prizes')}>Prizes</a>
-          </div>
+    <footer className="relative bg-black border-t border-lime-400/20">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {/* Quick Links */}
+          <motion.div 
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl font-bold gradient-text">Quick Links</h2>
+            <div className="flex flex-col space-y-3">
+              {['home', 'about', 'domains', 'timeline', 'prizes', 'rules'].map((link) => (
+                <motion.button
+                  key={link}
+                  onClick={() => scrollToSection(link)}
+                  className="text-gray-400 hover:text-lime-400 transition-all text-left capitalize text-lg font-medium group flex items-center gap-2"
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="w-0 h-0.5 bg-lime-400 group-hover:w-4 transition-all" />
+                  {link}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Contact Us */}
+          <motion.div 
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h2 className="text-3xl font-bold gradient-text">Contact Us</h2>
+            <div className="flex flex-col space-y-4">
+              <motion.a
+                href="mailto:eesa.engg@somaiya.edu"
+                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
+                whileHover={{ x: 5 }}
+              >
+                <FaEnvelope className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
+                <span className="text-base">eesa.engg@somaiya.edu</span>
+              </motion.a>
+              <motion.a
+                href="mailto:hrishkesh.c@somaiya.edu"
+                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
+                whileHover={{ x: 5 }}
+              >
+                <FaEnvelope className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
+                <span className="text-base">hrishkesh.c@somaiya.edu</span>
+              </motion.a>
+              <motion.a
+                href="tel:+919969594585"
+                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
+                whileHover={{ x: 5 }}
+              >
+                <FaPhone className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
+                <span className="text-base">+91 9969594585</span>
+              </motion.a>
+              <motion.a
+                href="tel:+917208639630"
+                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
+                whileHover={{ x: 5 }}
+              >
+                <FaPhone className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
+                <span className="text-base">+91 7208639630</span>
+              </motion.a>
+            </div>
+          </motion.div>
+
+          {/* Follow Us */}
+          <motion.div 
+            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h2 className="text-3xl font-bold gradient-text">Follow Us</h2>
+            <div className="flex gap-6">
+              <motion.a
+                href="https://www.instagram.com/ecesa_kjsce/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 flex items-center justify-center shadow-lg shadow-pink-500/50 group-hover:shadow-pink-500/80 transition-all">
+                  <FaInstagram className="text-white text-3xl" />
+                </div>
+              </motion.a>
+              <motion.a
+                href="https://in.linkedin.com/company/e-cesakjsce"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+                whileHover={{ scale: 1.2, rotate: -5 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center shadow-lg shadow-blue-500/50 group-hover:shadow-blue-500/80 transition-all">
+                  <FaLinkedin className="text-white text-3xl" />
+                </div>
+              </motion.a>
+            </div>
+            
+            {/* Additional CTA */}
+            <motion.div
+              className="mt-8"
+              whileHover={{ scale: 1.02 }}
+            >
+              <p className="text-gray-400 mb-3 text-sm">Questions about the event?</p>
+              <motion.a
+                href="mailto:eesa.engg@somaiya.edu"
+                className="btn-primary inline-block px-6 py-3 text-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get in Touch
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </div>
 
-        {/* Middle Section - Contact Us */}
-        <div className="footer-section center">
-          <h2 className="footer-title">Contact Us</h2>
-          <div className="contact-info">
-            <a href="mailto:eesa.engg@somaiya.edu" className="contact-item">
-              <FaEnvelope /> eesa.engg@somaiya.edu
-            </a>
-            <a href="mailto:hrishkesh.c@somaiya.edu" className="contact-item">
-              <FaEnvelope /> hrishkesh.c@somaiya.edu
-            </a>
-            <a href="tel:+919969594585" className="contact-item">
-              <FaPhone /> +91 9969594585
-            </a>
-            <a href="tel:+917208639630" className="contact-item">
-              <FaPhone /> +91 7208639630
-            </a>
-          </div>
-        </div>
-
-        {/* Right Section - Follow Us */}
-        <div className="footer-section right">
-          <h2 className="footer-title">Follow Us</h2>
-          <div className="social-links">
-            <a href="https://www.instagram.com/ecesa_kjsce/" aria-label="Instagram" target='_blank'>
-              <FaInstagram className="instagram-icon" />
-            </a>
-            <a href="https://in.linkedin.com/company/e-cesakjsce" aria-label="LinkedIn" target='_blank'>
-              <FaLinkedin className="linkedin-icon" />
-            </a>
-          </div>
-        </div>
+        {/* Bottom Bar */}
+        <motion.div 
+          className="mt-16 pt-8 border-t border-gray-800 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-gray-500">
+            © 2024-25 <span className="text-lime-400 font-semibold">e-CESA KJSCE</span>. All rights reserved
+          </p>
+          <motion.p 
+            className="text-gray-600 text-sm mt-2"
+            animate={{
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+            }}
+          >
+            Built with 💚 for AgriTech Innovation
+          </motion.p>
+        </motion.div>
       </div>
 
-      {/* Footer Bottom */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-text">
-          © 2024-25 e-CESA KJSCE. All rights reserved
-        </div>
-      </div>
-
-      {showScroll && (
-        <button className="scroll-to-top" onClick={scrollToTop} aria-label="Scroll to Top">
-          <FaArrowUp />
-        </button>
-      )}
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScroll && (
+          <motion.button
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-lime-400 to-emerald-500 text-black shadow-2xl shadow-lime-500/50 flex items-center justify-center group"
+            initial={{ opacity: 0, scale: 0, rotate: -180 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0, rotate: 180 }}
+            whileHover={{ scale: 1.2, y: -5 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Scroll to Top"
+          >
+            <FaArrowUp className="text-2xl group-hover:animate-bounce" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };

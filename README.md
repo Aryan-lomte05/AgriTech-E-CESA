@@ -1,4 +1,4 @@
-# 🌾 Agri-Tech Hackathon 2025
+# 🌾 Agri-Tech Hackathon 2026
 
 <div align="center">
 
@@ -6,7 +6,7 @@
 
 *Organized by e-CESA, K.J. Somaiya School of Engineering*
 
-[![Event Date](https://img.shields.io/badge/Event-March%2027--28%2C%202025-brightgreen)](https://www.ecesakjsse-agritech.com/)
+[![Event Date](https://img.shields.io/badge/Event-March%2027--28%2C%202026-brightgreen)](https://www.ecesakjsse-agritech.com/)
 [![Location](https://img.shields.io/badge/Location-Vidyavihar%2C%20Mumbai-blue)](https://kjsce.somaiya.edu)
 [![Type](https://img.shields.io/badge/Type-24--Hour%20Hackathon-orange)](https://kjsce.somaiya.edu)
 [![Level](https://img.shields.io/badge/Level-National-red)](https://kjsce.somaiya.edu)
@@ -19,7 +19,7 @@
 
 ## 🎯 About The Hackathon
 
-Agri-Tech Hackathon 2025 brought together India's brightest minds to innovate, collaborate, and develop cutting-edge technology solutions addressing critical challenges in agriculture. This intensive 24-hour coding sprint united students, researchers, and practitioners to reimagine the future of farming through digital innovation.
+Agri-Tech Hackathon 2026 brought together India's brightest minds to innovate, collaborate, and develop cutting-edge technology solutions addressing critical challenges in agriculture. This intensive 24-hour coding sprint united students, researchers, and practitioners to reimagine the future of farming through digital innovation.
 
 ### 🌟 Event Highlights
 
@@ -283,6 +283,6 @@ Got questions or suggestions? We'd love to hear from you!
 [![Stars](https://img.shields.io/github/stars/Aryan-lomte05/AgriTech-E-CESA?style=social)](https://github.com/Aryan-lomte05/AgriTech-E-CESA/stargazers)
 [![Forks](https://img.shields.io/github/forks/Aryan-lomte05/AgriTech-E-CESA?style=social)](https://github.com/Aryan-lomte05/AgriTech-E-CESA/network/members)
 
-**© 2025 e-CESA, K.J. Somaiya School of Engineering. All rights reserved.**
+**© 2026 e-CESA, K.J. Somaiya School of Engineering. All rights reserved.**
 
 </div>

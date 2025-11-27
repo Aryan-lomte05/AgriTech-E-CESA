@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import "./rules.css";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
 
 const rulesData = {
   "Registration Questions": [
     {
       question: "What is the competition registration deadline, and how do I register?",
-      answer: 'The registration deadline is March 01, 2025. You can register <a href="https://unstop.com/hackathons/agri-tech-hackathon-k-j-somaiya-college-of-engineering-kjsce-mumbai-1378830" target="_blank" rel="noopener noreferrer">here</a>.'
+      answer: 'The registration deadline is March 01, 2026. You can register <a href="https://unstop.com/hackathons/agri-tech-hackathon-k-j-somaiya-college-of-engineering-kjsce-mumbai-1378830" target="_blank" rel="noopener noreferrer" class="text-lime-400 hover:text-lime-300 underline">here</a>.'
     },
     {
       question: "Where is the hackathon being held?",
@@ -39,7 +40,7 @@ const rulesData = {
   "Technical Questions": [
     {
       question: "What are the development topics for this hackathon?",
-      answer: "The tracks include Precision Agriculture, Supply Chain Optimization, Farmers’ Empowerment, Biofuel Innovation, and Open Innovation in Agriculture."
+      answer: "The tracks include Precision Agriculture, Supply Chain Optimization, Farmers' Empowerment, Biofuel Innovation, and Open Innovation in Agriculture."
     },
     {
       question: "What technologies are recommended for project development?",
@@ -76,28 +77,65 @@ const Rules = () => {
   };
 
   return (
-    <div className="rules-container">
-      <h1 className="faq-title">
-        <span className="letter">F</span>
-        <span className="letter">A</span>
-        <span className="letter">Q</span>
+    <div className="section-container">
+      <h1 className="faq-title mb-16">
+        {['F', 'A', 'Q'].map((letter, i) => (
+          <span key={i} className="letter">{letter}</span>
+        ))}
       </h1>
-      <div className="faq-grid">
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {Object.entries(rulesData).map(([category, questions], sectionIndex) => (
-          <div key={category} className="faq-section">
-            <h2 className="faq-category">{category}</h2>
-            {questions.map((item, index) => {
-              const uniqueIndex = `${sectionIndex}-${index}`;
-              return (
-                <div key={uniqueIndex} className="faq-item">
-                  <button className="faq-question" onClick={() => toggleFAQ(uniqueIndex)}>
-                    {item.question} <span>{openIndex === uniqueIndex ? "−" : "+"}</span>
-                  </button>
-                  <div className={`faq-answer ${openIndex === uniqueIndex ? 'open' : ''}`} dangerouslySetInnerHTML={{ __html: item.answer }}>
-                  </div>
-                </div>
-              );
-            })}
+          <div key={category} className="space-y-4">
+            <h2 className="text-2xl font-bold text-lime-400 mb-6 border-b border-lime-400/30 pb-2">
+              {category}
+            </h2>
+            
+            <div className="space-y-3">
+              {questions.map((item, index) => {
+                const uniqueIndex = `${sectionIndex}-${index}`;
+                const isOpen = openIndex === uniqueIndex;
+                
+                return (
+                  <motion.div
+                    key={uniqueIndex}
+                    className="glass-card overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <button
+                      onClick={() => toggleFAQ(uniqueIndex)}
+                      className="w-full flex items-center justify-between text-left p-4 hover:bg-white/5 transition-colors duration-200"
+                    >
+                      <span className="font-semibold text-white pr-4">
+                        {item.question}
+                      </span>
+                      <span className="flex-shrink-0 text-lime-400">
+                        {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                      </span>
+                    </button>
+                    
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div
+                            className="px-4 pb-4 text-gray-300 leading-relaxed"
+                            dangerouslySetInnerHTML={{ __html: item.answer }}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         ))}
       </div>
