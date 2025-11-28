@@ -311,32 +311,38 @@ const Timeline = () => {
   }, []);
 
   const events = [
-    {
-      date: '1st Dec 2025',
-      title: 'Phase 1: Registrations Begin',
-      description: 'Registrations go live and idea submission begins. Get ready to showcase your innovative ideas!',
-    },
-    {
-      date: '5th Jan 2026',
-      title: 'Submission Deadline',
-      description: "Final day to submit your groundbreaking ideas. Don't miss this deadline!",
-    },
-    {
-      date: '15th Jan 2026',
-      title: 'Selection Results Announcement',
-      description: 'The moment of truth! Find out if your idea has been selected for the next phase.',
-    },
-    {
-      date: '5th - 6th Feb 2026',
-      title: 'Hackathon Sprint',
-      description: 'Get ready for the main event! 24-hour coding sprint with mentorship and collaboration.',
-    },
-    {
-      date: '6th Feb 2026',
-      title: 'Winner Announcement',
-      description: "Time's up! Final pitches, judging, and the crowning of champions.",
-    }
-  ];
+  {
+    date: '1st Dec 2025',
+    title: 'Phase 1: Registrations Begin',
+    description: 'Registrations go live and idea submission begins. Get ready to showcase your innovative ideas!',
+  },
+  {
+    date: '5th Jan 2026',
+    title: 'Submission Deadline',
+    description: "Final day to submit your groundbreaking ideas. Don't miss this deadline!",
+  },
+  {
+    date: '15th Jan 2026',
+    title: 'Selection Results Announcement',
+    description: 'The moment of truth! Find out if your idea has been selected for the next phase.',
+  },
+  {
+    date: '22nd - 23rd Jan 2026',
+    title: 'Phase 1: Field Visit to KIAAR, Karnataka',
+    description: 'Selected students visit KIAAR, Karnataka to interact with farmers and understand real-world agricultural challenges, followed by expert speaker sessions from industry professionals.',
+  },
+  {
+    date: '6th - 7th Feb 2026',
+    title: 'Phase 2: Agri-Tech Hackathon Sprint',
+    description: 'The main event at KJSSE! Engineers, startups, industry professionals, and students collaborate to develop smart, sustainable AI and IoT-based solutions for agriculture.',
+  },
+  {
+    date: '7th Feb 2026',
+    title: 'Winner Announcement',
+    description: "Time's up! Final pitches, judging, and the crowning of champions.",
+  }
+];
+
 
   return (
     <div className="section-container px-4 md:px-6" id="timeline-container" ref={containerRef}>
