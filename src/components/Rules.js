@@ -6,7 +6,7 @@ const rulesData = {
   "Registration Questions": [
     {
       question: "What is the competition registration deadline, and how do I register?",
-      answer: 'The registration deadline is March 01, 2026. You can register <a href="https://unstop.com/hackathons/agri-tech-hackathon-k-j-somaiya-college-of-engineering-kjsce-mumbai-1378830" target="_blank" rel="noopener noreferrer" class="text-lime-400 hover:text-lime-300 underline">here</a>.'
+      answer: 'The registration deadline is 5th Jan, 2026. You can register <a href="https://unstop.com/hackathons/agri-tech-hackathon-k-j-somaiya-college-of-engineering-kjsce-mumbai-1378830" target="_blank" rel="noopener noreferrer" class="text-lime-400 hover:text-lime-300 underline">here</a>.'
     },
     {
       question: "Where is the hackathon being held?",

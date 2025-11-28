@@ -65,7 +65,7 @@ const CountdownUnit = ({ value, label, icon }) => {
 
 const FlipCountdown = () => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date('2026-03-01T23:59:59').getTime();
+    const targetDate = new Date('2026-01-05T23:59:59').getTime();
     const now = new Date().getTime();
     const difference = targetDate - now;
 

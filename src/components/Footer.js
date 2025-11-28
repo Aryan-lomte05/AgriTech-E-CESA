@@ -158,7 +158,7 @@ const Footer = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-500">
-            © 2024-25 <span className="text-lime-400 font-semibold">e-CESA KJSCE</span>. All rights reserved
+            © 2025-26 <span className="text-lime-400 font-semibold">e-CESA KJSCE</span>. All rights reserved
           </p>
           <motion.p 
             className="text-gray-600 text-sm mt-2"
