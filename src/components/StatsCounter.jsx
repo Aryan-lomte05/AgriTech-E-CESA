@@ -34,9 +34,14 @@ const AnimatedNumber = ({ target, duration = 2000, suffix = "" }) => {
     }
   }, [inView, target, duration]);
 
+  // Format large numbers (200000 → 2,00,000)
+  const formattedCount = target >= 1000 
+    ? count.toLocaleString('en-IN') 
+    : count;
+
   return (
     <span ref={ref} className="tabular-nums">
-      {count.toLocaleString()}{suffix}
+      {formattedCount}{suffix}
     </span>
   );
 };
@@ -44,7 +49,7 @@ const AnimatedNumber = ({ target, duration = 2000, suffix = "" }) => {
 const StatCard = ({ icon: Icon, value, label, suffix = "", color, delay }) => {
   return (
     <motion.div
-      className="glass-card p-8 text-center border-2 border-lime-400/20 hover:border-lime-400 transition-all group"
+      className="glass-card p-6 md:p-8 text-center border-2 border-lime-400/20 hover:border-lime-400 transition-all group relative overflow-hidden"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -52,16 +57,16 @@ const StatCard = ({ icon: Icon, value, label, suffix = "", color, delay }) => {
       whileHover={{ scale: 1.05, y: -5 }}
     >
       <motion.div
-        className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${color} mb-4 group-hover:scale-110 transition-transform`}
+        className={`inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${color} mb-4 group-hover:scale-110 transition-transform`}
       >
-        <Icon size={32} className="text-white" />
+        <Icon size={28} className="text-white md:w-8 md:h-8" />
       </motion.div>
       
-      <div className="text-5xl md:text-6xl font-black gradient-text mb-2">
+      <div className="text-4xl md:text-5xl lg:text-6xl font-black gradient-text mb-2 break-words">
         <AnimatedNumber target={value} suffix={suffix} />
       </div>
       
-      <p className="text-gray-400 font-medium uppercase tracking-wider text-sm">
+      <p className="text-gray-400 font-medium uppercase tracking-wider text-xs md:text-sm">
         {label}
       </p>
 
@@ -95,7 +100,7 @@ const StatsCounter = () => {
   const stats = [
     {
       icon: Users,
-      value: 500,
+      value: 1200,
       suffix: "+",
       label: "Participants",
       color: "from-lime-400 to-emerald-500",
@@ -103,7 +108,7 @@ const StatsCounter = () => {
     },
     {
       icon: Briefcase,
-      value: 125,
+      value: 300,
       suffix: "+",
       label: "Teams Formed",
       color: "from-emerald-400 to-teal-500",
@@ -119,7 +124,7 @@ const StatsCounter = () => {
     },
     {
       icon: TrendingUp,
-      value: 5,
+      value: 4,
       suffix: "",
       label: "Innovation Tracks",
       color: "from-blue-400 to-purple-500",
@@ -128,22 +133,22 @@ const StatsCounter = () => {
   ];
 
   return (
-    <div className="section-container bg-gradient-to-b from-neutral-900 to-black">
+    <div className="section-container bg-gradient-to-b from-neutral-900 to-black py-16 md:py-20">
       <motion.div
-        className="text-center mb-16"
+        className="text-center mb-12 md:mb-16 px-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl md:text-6xl font-black gradient-text mb-4">
+        <h2 className="text-3xl md:text-4xl lg:text-6xl font-black gradient-text mb-4">
           By The Numbers
         </h2>
-        <p className="text-gray-400 text-lg">
+        <p className="text-gray-400 text-base md:text-lg">
           Join the growing community of agricultural innovators! 🌾
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-7xl mx-auto px-4">
         {stats.map((stat, index) => (
           <StatCard key={index} {...stat} />
         ))}
