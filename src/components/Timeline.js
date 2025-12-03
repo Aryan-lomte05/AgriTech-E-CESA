@@ -329,7 +329,7 @@ const Timeline = () => {
   {
     date: '22nd - 23rd Jan 2026',
     title: 'Phase 1: Field Visit to KIAAR, Karnataka',
-    description: 'Selected students visit KIAAR, Karnataka to interact with farmers and understand real-world agricultural challenges, followed by expert speaker sessions from industry professionals.',
+    description: 'Organizing committee visit KIAAR, Karnataka to interact with farmers and understand real-world agricultural challenges, followed by expert speaker sessions from industry professionals.',
   },
   {
     date: '6th - 7th Feb 2026',
