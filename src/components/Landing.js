@@ -432,7 +432,7 @@ const Landing = () => {
           <motion.button
             onClick={() => {
               window.open(
-                "https://unstop.com/hackathons/agri-tech-hackathon-k-j-somaiya-college-of-engineering-kjsce-mumbai-1378830",
+                "https://unstop.com/o/WPmtVrJ?utm_medium=Share&utm_source=aryanlom6154&utm_campaign=Online_coding_challenge",
                 "_blank",
                 "noopener,noreferrer"
               );
