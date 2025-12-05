@@ -21,7 +21,7 @@
 //       <div className="relative min-h-screen bg-neutral-950 overflow-x-hidden">
 //         <LoadingScreen />
 //         <Navbar />
-        
+
 //         <main className="relative">
 //           <section id="home">
 //             <Landing />
@@ -89,12 +89,14 @@ import Chicken from "./components/Chicken";
 import HarvestEasterEgg from "./components/HarvestEasterEgg";
 import Gallery from "./components/Gallery";
 
+import ProblemStatements from "./components/ProblemStatements";   // ← NEW IMPORT
+
 // Home Page Component
 const HomePage = () => (
   <>
     <LoadingScreen />
     <Navbar />
-    
+
     <main className="relative">
       <section id="home">
         <Landing />
@@ -141,7 +143,7 @@ const HomePage = () => (
 // Gallery Page Component
 const GalleryPage = () => (
   <>
-   
+
     <Navbar />
     <Gallery />
     <Footer />
@@ -157,6 +159,16 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+
+            {/*NEW ROUTE */}
+            <Route path="/problem-statements" element={
+              <>
+                <Navbar />
+                <ProblemStatements />
+                <Footer />
+              </>
+            } />
+
           </Routes>
           <Analytics />
         </div>
