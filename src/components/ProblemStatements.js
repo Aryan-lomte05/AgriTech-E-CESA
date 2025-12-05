@@ -5,7 +5,7 @@ const ProblemStatements = () => {
     // === Next-Gen Agri-Tech ===
     {
       title: "Smart Multi-Sensor Crop Health Monitoring Device",
-      description: "Develop a rugged IoT device equipped with pH, moisture NPK chlorophyll humidity and temperature sensors to collect real-time crop and soil data. The device should operate reliably in field conditions perform local preprocessing of sensor readings and transmit aggregated telemetry to a cloud platform for further analytics and actionable recommendations. Emphasize low-cost hardware battery/solar operation durability and support for remote OTA firmware updates.",
+      description: " Develop a rugged IoT device equipped with pH, moisture, NPK, chlorophyll, humidity, and temperature sensors to collect real-time crop and soil data, transmitting it to the cloud for recommendations. ",
       category: "Hardware",
       psNumber: "AGT25001",
       theme: "Next-Gen Agri-Tech",
@@ -14,7 +14,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Autonomous Farm Rover for Precision Tasks",
-      description: "Build an autonomous rover capable of precision spraying micro-fertilization and automated weeding using GPS RTK or local RTK-like positioning and computer vision. The solution must include obstacle avoidance path-planning for repeatable passes modular tool carriage for different implements and efficient energy management for multi-hour field operation. Provide logging and telemetry for task verification and a safety interlock mechanism.",
+      description: " Build an autonomous rover capable of precision spraying, micro fertigation, and automated weeding using GPS and computer vision.",
       category: "Hardware",
       psNumber: "AGT25002",
       theme: "Next-Gen Agri-Tech",
@@ -23,7 +23,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Solar-Powered Field Surveillance Drone",
-      description: "Design a solar-charging drone platform with multispectral and RGB cameras to monitor crop stress irrigation needs and pest activity. The platform should maximize flight time using solar assist support scheduled autonomous missions and provide stitched orthomosaics and change-detection insights for farm managers. Include a cloud ingestion pipeline and a lightweight field UI for farmers.",
+      description: "Design a solar-charging drone with multispectral cameras to monitor crop stress, irrigation, and pest activity. ",
       category: "Hardware",
       psNumber: "AGT25003",
       theme: "Next-Gen Agri-Tech",
@@ -32,7 +32,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Precision Spray Drone With Smart Nozzle Control",
-      description: "Develop a drone-based precision spraying system capable of variable-rate pesticide or fertilizer application. Integrate wind sensing droplet size control and AI-based target detection for safe and efficient spraying. The system must reduce chemical usage avoid drift and document applied dose at GPS-tagged coordinates for traceability.",
+      description: " Develop a drone-based precision spraying system capable of variable-rate pesticide or fertilizer application. Integrate wind sensors, droplet size control, and AI-based target detection for safe and efficient spraying.",
       category: "Hardware",
       psNumber: "AGT25004",
       theme: "Next-Gen Agri-Tech",
@@ -41,7 +41,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Drone-Based Seed Sowing & Reforestation System",
-      description: "Create a drone capable of deploying seed balls accurately across large or inaccessible terrains. The system should optimise seed density per area record geotagged sowed locations and support configurable seed-ball compositions for different ecosystems. Include mission planning success-tracking and post-deployment monitoring.",
+      description: "Create a drone capable of deploying seed balls accurately across large or inaccessible terrains. The system should optimize seed density, map sowed locations, and support reforestation or cover cropping. ",
       category: "Hardware",
       psNumber: "AGT25005",
       theme: "Next-Gen Agri-Tech",
@@ -50,7 +50,7 @@ const ProblemStatements = () => {
     },
     {
       title: "AI Crop-Stress Identification System",
-      description: "Create an AI model and pipeline that processes drone and mobile images to identify diseases nutrient deficiencies and pest infestations with high accuracy. Provide field-usable model variants for low-power devices a confidence score per detection and a recommendation engine mapping detected issues to practical corrective actions for farmers.",
+      description: " Create an AI model that processes drone/mobile images to identify diseases, nutrient deficiencies, and pest infestation with high accuracy. ",
       category: "Software",
       psNumber: "AGT25006",
       theme: "Next-Gen Agri-Tech",
@@ -59,7 +59,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Farm Digital Twin Simulation Engine",
-      description: "Build a simulation platform that models farm conditions using soil patterns weather data crop growth models and management actions to simulate outcomes of different decisions. Support scenario comparisons visual timelines and integration with live farm telemetry to calibrate simulations.",
+      description: "Build a simulation platform that models farm conditions using soil patterns, weather data, and crop growth models to simulate outcomes of different decisions.",
       category: "Software",
       psNumber: "AGT25007",
       theme: "Next-Gen Agri-Tech",
@@ -68,7 +68,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Predictive Yield Optimization Platform",
-      description: "Create an ML-driven platform that uses historical yield records weather trends soil and input data to recommend sowing windows irrigation schedules and nutrient plans that optimize yield and minimize resource use. Provide confidence intervals sensitivity explanations and dashboard insights for farm advisors.",
+      description: " Create a machine-learning model that uses historic yield patterns, weather trends, and soil conditions to recommend sowing, irrigation, and nutrient schedules.",
       category: "Software",
       psNumber: "AGT25008",
       theme: "Next-Gen Agri-Tech",
@@ -76,10 +76,11 @@ const ProblemStatements = () => {
       tags: ["Machine Learning", "Predictive Analytics", "Data Science", "Dashboard"],
     },
 
+
     // === Agri-Market Access ===
     {
       title: "Smart Storage Module With Spoilage Sensors",
-      description: "Build a sensor-embedded cold storage system that tracks temperature humidity and gas levels (e.g. ethylene). The system should predict spoilage notify stakeholders and provide control/automation to reduce post-harvest loss. Emphasize modularity for different crop types and low-power operation for rural electrified contexts.",
+      description: " Build a sensor-embedded cold storage system that tracks temperature, humidity, and gas levels to predict spoilage and reduce post-harvest losses. ",
       category: "Hardware",
       psNumber: "AGT35001",
       theme: "Agri-Market Access",
@@ -88,7 +89,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Automated Quality Grading Machine",
-      description: "Develop a camera and sensor based grading system to analyse produce characteristics such as size colour surface defects and firmness. Produce accurate grades and output packaged metrics for sorting lines. System should be adaptable across produce types with retrainable models.",
+      description: " Develop an electronic grading system that analyzes produce using cameras and sensors, classifying items by size, color, and visible defects. ",
       category: "Hardware",
       psNumber: "AGT35002",
       theme: "Agri-Market Access",
@@ -97,7 +98,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Smart Packaging With Shelf-Life Indicators",
-      description: "Design packaging with integrated freshness/shelf-life indicators that change color or expose NFC metadata when spoilage thresholds are reached. Provide a low-cost sensor approach and cloud dashboard to allow suppliers and retailers to monitor remaining shelf-life.",
+      description: " Design packaging containing freshness sensors that indicate spoilage levels using color-change labels or NFC data. ",
       category: "Hardware",
       psNumber: "AGT35003",
       theme: "Agri-Market Access",
@@ -106,7 +107,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Blockchain-Based Farm-to-Fork Traceability System",
-      description: "Create a blockchain solution that records harvesting handling processing and logistics data to ensure transparent and tamper-proof traceability. Include interfaces for smallholders logistics partners and retailers; design for offline-first data capture and eventual ledger synchronization.",
+      description: "Create a blockchain solution that logs harvesting, handling, and logistics data to ensure transparent and tamper-proof traceability.",
       category: "Software",
       psNumber: "AGT35004",
       theme: "Agri-Market Access",
@@ -115,7 +116,7 @@ const ProblemStatements = () => {
     },
     {
       title: "AI Demand Forecasting for Local Markets",
-      description: "Develop predictive models to analyse short- to medium-term demand trends for local markets using historical sales festival cycles local events and weather. Produce actionable planting and pricing recommendations to reduce waste and improve farmer incomes.",
+      description: " Develop a predictive model that analyzes demand trends, festival cycles, and weather patterns to help farmers plan crops and reduce waste. ",
       category: "Software",
       psNumber: "AGT35005",
       theme: "Agri-Market Access",
@@ -124,7 +125,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Farmer-to-Consumer Marketplace With Logistics Optimization",
-      description: "Build a digital marketplace enabling farmers to sell directly to consumers integrated with real-time inventory dynamic pricing and delivery routing optimization. Provide options for cooperative listings and aggregation to improve logistics efficiency.",
+      description: " Build a digital marketplace for direct sales, integrating real-time inventory, pricing, and optimized delivery routing.",
       category: "Software",
       psNumber: "AGT35006",
       theme: "Agri-Market Access",
@@ -132,10 +133,11 @@ const ProblemStatements = () => {
       tags: ["Full Stack", "E-commerce", "Logistics", "Optimization"],
     },
 
+
     // === Farmer Empowerment ===
     {
       title: "Handheld Crop Diagnosis Device",
-      description: "Design a portable low-cost device using sensor arrays and simple visual indicators to detect early plant health issues without dependency on continuous internet connectivity. Provide offline inference or brief connectivity bursts to validate results remotely.",
+      description: "Design a portable device using sensors and LEDs to detect early plant health issues without requiring internet connectivity.",
       category: "Hardware",
       psNumber: "AGT45001",
       theme: "Farmer Empowerment",
@@ -144,7 +146,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Affordable Smart Weather Station for Rural Areas",
-      description: "Create a compact weather monitoring station measuring wind humidity rainfall and temperature that is affordable and rugged for rural deployments. Provide hyperlocal updates to farmers simple UI and battery/solar powered operation.",
+      description: " Create a compact weather monitoring station measuring wind, humidity, rainfall, and temperature, delivering hyperlocal updates. ",
       category: "Hardware",
       psNumber: "AGT45002",
       theme: "Farmer Empowerment",
@@ -153,7 +155,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Solar-Powered Community Information Kiosk",
-      description: "Develop a solar-powered standalone kiosk that provides advisories government scheme information and farming best practices in local languages. Include offline caching simple UI and modular connectivity options (SIM/LoRa/Wi-Fi).",
+      description: " Develop a standalone solar-powered kiosk offering advisories, government scheme updates, and farming best practices in rural areas. ",
       category: "Hardware",
       psNumber: "AGT45003",
       theme: "Farmer Empowerment",
@@ -162,7 +164,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Multilingual Farmer Advisory & Chat Assistant",
-      description: "Build an AI chatbot accessible via mobile and kiosk that offers guidance on crop health government schemes and best practices in multiple regional languages. Include image-based question intake suggested actions and links to extension services.",
+      description: "Build an AI chatbot offering guidance on crop health, schemes, and best practices in multiple regional languages. ",
       category: "Software",
       psNumber: "AGT45004",
       theme: "Farmer Empowerment",
@@ -171,7 +173,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Digital Farmer Learning Platform With AR/VR Simulations",
-      description: "Create an interactive learning platform combining short lessons and AR/VR simulations demonstrating irrigation planning pest identification equipment safety and other practical skills to accelerate farmer training.",
+      description: "Create interactive modules teaching irrigation planning, pest identification, and safety through AR/VR-based demonstrations. ",
       category: "Software",
       psNumber: "AGT45005",
       theme: "Farmer Empowerment",
@@ -180,7 +182,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Community Knowledge-Sharing App",
-      description: "Develop a platform where farmers share images field problems and solutions collaboratively connecting them with experts. Include image tagging geolocation threaded discussions and offline posting capability.",
+      description: " Develop a platform where farmers share images, solve problems collaboratively, and engage with experts. ",
       category: "Software",
       psNumber: "AGT45006",
       theme: "Farmer Empowerment",
@@ -188,10 +190,11 @@ const ProblemStatements = () => {
       tags: ["Social App", "Offline", "Community", "Mobile"],
     },
 
+
     // === Green Growth ===
     {
       title: "IoT Water Efficiency Controller for Irrigation Systems",
-      description: "Design a controller that adjusts irrigation schedules and flow rates based on soil moisture evapotranspiration and short-term weather predictions to conserve water. Provide support for common irrigation hardware and fail-safe manual override.",
+      description: "Design a controller that adjusts irrigation based on soil moisture and weather predictions to reduce wastage. ",
       category: "Hardware",
       psNumber: "AGT55001",
       theme: "Green Growth",
@@ -200,7 +203,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Portable Soil Health Scanner",
-      description: "Build a handheld scanner using spectroscopy or sensor fusion to instantly measure soil carbon moisture and nutrient content providing on-the-spot recommendations and logging results for trend analysis.",
+      description: "Build a handheld scanner using spectroscopy or sensors to instantly measure soil carbon, moisture, and nutrients. ",
       category: "Hardware",
       psNumber: "AGT55002",
       theme: "Green Growth",
@@ -209,7 +212,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Smart Carbon Capture & Monitoring Device",
-      description: "Create a device and monitoring system that tracks soil carbon levels above-ground biomass and CO₂ absorption to verify regenerative farming impacts. Include secure reporting and integration for carbon-credit frameworks.",
+      description: " Create a device to track soil carbon levels, biomass, and CO2 absorption for regenerative farming verification. ",
       category: "Hardware",
       psNumber: "AGT55003",
       theme: "Green Growth",
@@ -218,7 +221,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Soil Health Digital Dashboard With Regeneration Insights",
-      description: "Develop a dashboard visualizing soil property changes over time highlighting regeneration opportunities recommended interventions and long-term trend forecasts. Provide exportable reports and multi-farm aggregation features.",
+      description: "Develop a platform visualizing soil changes over time, highlighting regeneration opportunities. ",
       category: "Software",
       psNumber: "AGT55004",
       theme: "Green Growth",
@@ -227,7 +230,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Carbon-Credit Verification & Trading Platform",
-      description: "Build a system to estimate carbon sequestration from verified farming practices and enable registration and trading of carbon credits. Incorporate measurement reporting verification workflows and marketplace primitives.",
+      description: " Build a system estimating carbon sequestration from sustainable farming practices and enabling carbon-credit trading. ",
       category: "Software",
       psNumber: "AGT55005",
       theme: "Green Growth",
@@ -236,7 +239,7 @@ const ProblemStatements = () => {
     },
     {
       title: "Water Usage Prediction & Sustainability Analyzer",
-      description: "Create an AI model predicting seasonal water requirements and sustainability risks enabling farm-level water budgeting. Provide scenario simulations and alerts for drought stress and overuse risk.",
+      description: " Create an AI model predicting seasonal water requirements and sustainability risks. ",
       category: "Software",
       psNumber: "AGT55006",
       theme: "Green Growth",
