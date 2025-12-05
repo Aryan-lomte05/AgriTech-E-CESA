@@ -247,7 +247,7 @@ const Navbar = () => {
     { id: "rules", label: "FAQ", icon: FileText, isPage: false },
 
     //NEW ENTRY ADDED
-    { id: "problem-statements", label: "Problem Statements", icon: ListTodo, isPage: true, path: "/problem-statements" },
+    { id: "problem-statements", label: "Problems", icon: ListTodo, isPage: true, path: "/problem-statements" },
 
     { id: "sponsors", label: "Sponsors", icon: Users, isPage: false },
     { id: "footer", label: "Contact", icon: Mail, isPage: false },
