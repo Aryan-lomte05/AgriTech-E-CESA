@@ -219,7 +219,7 @@
 // export default Navbar;
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, Info, Target, Clock, Trophy, FileText, Users, Mail, Camera } from "lucide-react";
+import { Menu, X, Home, Info, Target, Clock, Trophy, FileText, Users, Mail, Camera, ListTodo } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -245,6 +245,10 @@ const Navbar = () => {
     { id: "prizes", label: "Prizes", icon: Trophy, isPage: false },
     { id: "gallery", label: "Gallery", icon: Camera, isPage: true },
     { id: "rules", label: "FAQ", icon: FileText, isPage: false },
+
+    //NEW ENTRY ADDED
+    { id: "problem-statements", label: "Problems", icon: ListTodo, isPage: true, path: "/problem-statements" },
+
     { id: "sponsors", label: "Sponsors", icon: Users, isPage: false },
     { id: "footer", label: "Contact", icon: Mail, isPage: false },
   ];
@@ -269,8 +273,9 @@ const Navbar = () => {
 
   const scrollToSection = (link) => {
     if (link.isPage) {
-      navigate('/gallery');
+      navigate(link.path);
       setIsMenuOpen(false);
+      return;
     } else {
       if (location.pathname !== '/') {
         navigate('/');
@@ -293,15 +298,14 @@ const Navbar = () => {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? isDark 
-              ? "bg-black/40 backdrop-blur-xl border-b border-lime-400/20 shadow-lg shadow-lime-500/5"
-              : "bg-white/80 backdrop-blur-xl border-b border-lime-400/30 shadow-lg shadow-lime-500/10"
-            : isDark
-              ? "bg-transparent"
-              : "bg-black/20 backdrop-blur-md"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
+          ? isDark
+            ? "bg-black/40 backdrop-blur-xl border-b border-lime-400/20 shadow-lg shadow-lime-500/5"
+            : "bg-white/80 backdrop-blur-xl border-b border-lime-400/30 shadow-lg shadow-lime-500/10"
+          : isDark
+            ? "bg-transparent"
+            : "bg-black/20 backdrop-blur-md"
+          }`}
         initial={{ y: 0 }}
         animate={{ y: isHidden ? -100 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -324,32 +328,30 @@ const Navbar = () => {
                   className="relative group"
                 >
                   <div className="absolute inset-0 bg-lime-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <img 
-                    src={logo} 
-                    alt={`Logo ${idx + 1}`} 
-                    className={`relative z-10 ${idx === 2 ? 'h-14' : 'h-11'} w-auto filter drop-shadow-lg`} 
+                  <img
+                    src={logo}
+                    alt={`Logo ${idx + 1}`}
+                    className={`relative z-10 ${idx === 2 ? 'h-14' : 'h-11'} w-auto filter drop-shadow-lg`}
                   />
                 </motion.div>
               ))}
             </motion.div>
 
             {/* Desktop Navigation - MORE SPACING */}
-            <div className={`hidden lg:flex items-center gap-3 backdrop-blur-md rounded-full px-5 py-2 border ${
-              isDark 
-                ? "bg-white/5 border-white/10" 
-                : "bg-black/10 border-black/20"
-            }`}>
+            <div className={`hidden lg:flex items-center gap-3 backdrop-blur-md rounded-full px-5 py-2 border ${isDark
+              ? "bg-white/5 border-white/10"
+              : "bg-black/10 border-black/20"
+              }`}>
               {navLinks.map((link, index) => {
                 const Icon = link.icon;
                 return (
                   <motion.button
                     key={link.id}
                     onClick={() => scrollToSection(link)}
-                    className={`group relative px-4 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${
-                      isDark
-                        ? "text-white/80 hover:text-lime-400"
-                        : "text-black font-bold hover:text-lime-600"
-                    }`}
+                    className={`group relative px-4 py-2.5 text-sm font-medium rounded-full transition-all duration-300 ${isDark
+                      ? "text-white/80 hover:text-lime-400"
+                      : "text-black font-bold hover:text-lime-600"
+                      }`}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -361,11 +363,10 @@ const Navbar = () => {
                       {link.label}
                     </span>
                     <motion.div
-                      className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 ${
-                        isDark
-                          ? "bg-gradient-to-r from-lime-400/0 via-lime-400/10 to-lime-400/0"
-                          : "bg-gradient-to-r from-lime-400/20 via-lime-400/30 to-lime-400/20"
-                      }`}
+                      className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 ${isDark
+                        ? "bg-gradient-to-r from-lime-400/0 via-lime-400/10 to-lime-400/0"
+                        : "bg-gradient-to-r from-lime-400/20 via-lime-400/30 to-lime-400/20"
+                        }`}
                       initial={false}
                     />
                   </motion.button>
@@ -376,11 +377,10 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden p-3 transition-colors backdrop-blur-md rounded-full border ${
-                isDark
-                  ? "text-white hover:text-lime-400 bg-white/5 border-white/10"
-                  : "text-black hover:text-lime-600 bg-black/10 border-black/20"
-              }`}
+              className={`lg:hidden p-3 transition-colors backdrop-blur-md rounded-full border ${isDark
+                ? "text-white hover:text-lime-400 bg-white/5 border-white/10"
+                : "text-black hover:text-lime-600 bg-black/10 border-black/20"
+                }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label="Toggle menu"
