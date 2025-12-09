@@ -4,6 +4,7 @@ const ProblemStatements = () => {
   const problemData = [
     // === Next-Gen Agri-Tech ===
     {
+      id: 1,
       title: "Smart Multi-Sensor Crop Health Monitoring Device",
       description: " Develop a rugged IoT device equipped with pH, moisture, NPK, chlorophyll, humidity, and temperature sensors to collect real-time crop and soil data, transmitting it to the cloud for recommendations. ",
       category: "Hardware",
@@ -13,6 +14,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "Embedded", "Sensors", "Cloud", "Firmware", "OTA"],
     },
     {
+      id: 2,
       title: "Autonomous Farm Rover for Precision Tasks",
       description: " Build an autonomous rover capable of precision spraying, micro fertigation, and automated weeding using GPS and computer vision.",
       category: "Hardware",
@@ -22,6 +24,7 @@ const ProblemStatements = () => {
       tags: ["Robotics", "Computer Vision", "AI", "GPS", "Autonomous"],
     },
     {
+      id: 3,
       title: "Solar-Powered Field Surveillance Drone",
       description: "Design a solar-charging drone with multispectral cameras to monitor crop stress, irrigation, and pest activity. ",
       category: "Hardware",
@@ -31,6 +34,7 @@ const ProblemStatements = () => {
       tags: ["Drone", "Computer Vision", "AI", "Solar", "Image Processing"],
     },
     {
+      id: 4,
       title: "Precision Spray Drone With Smart Nozzle Control",
       description: " Develop a drone-based precision spraying system capable of variable-rate pesticide or fertilizer application. Integrate wind sensors, droplet size control, and AI-based target detection for safe and efficient spraying.",
       category: "Hardware",
@@ -40,6 +44,7 @@ const ProblemStatements = () => {
       tags: ["Drone", "AI", "Control Systems", "IoT", "Precision Ag"],
     },
     {
+      id: 5,
       title: "Drone-Based Seed Sowing & Reforestation System",
       description: "Create a drone capable of deploying seed balls accurately across large or inaccessible terrains. The system should optimize seed density, map sowed locations, and support reforestation or cover cropping. ",
       category: "Hardware",
@@ -49,6 +54,7 @@ const ProblemStatements = () => {
       tags: ["Drone", "Robotics", "GPS", "Automation"],
     },
     {
+      id: 6,
       title: "AI Crop-Stress Identification System",
       description: " Create an AI model that processes drone/mobile images to identify diseases, nutrient deficiencies, and pest infestation with high accuracy. ",
       category: "Software",
@@ -58,6 +64,7 @@ const ProblemStatements = () => {
       tags: ["AI", "Machine Learning", "Computer Vision", "Deep Learning", "Mobile"],
     },
     {
+      id: 7,
       title: "Farm Digital Twin Simulation Engine",
       description: "Build a simulation platform that models farm conditions using soil patterns, weather data, and crop growth models to simulate outcomes of different decisions.",
       category: "Software",
@@ -67,6 +74,7 @@ const ProblemStatements = () => {
       tags: ["Digital Twin", "Simulation", "Data Visualization", "ML"],
     },
     {
+      id: 8,
       title: "Predictive Yield Optimization Platform",
       description: " Create a machine-learning model that uses historic yield patterns, weather trends, and soil conditions to recommend sowing, irrigation, and nutrient schedules.",
       category: "Software",
@@ -79,6 +87,7 @@ const ProblemStatements = () => {
 
     // === Agri-Market Access ===
     {
+      id: 9,
       title: "Smart Storage Module With Spoilage Sensors",
       description: " Build a sensor-embedded cold storage system that tracks temperature, humidity, and gas levels to predict spoilage and reduce post-harvest losses. ",
       category: "Hardware",
@@ -88,6 +97,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "Sensors", "Cold Chain", "Automation"],
     },
     {
+      id: 10,
       title: "Automated Quality Grading Machine",
       description: " Develop an electronic grading system that analyzes produce using cameras and sensors, classifying items by size, color, and visible defects. ",
       category: "Hardware",
@@ -97,6 +107,7 @@ const ProblemStatements = () => {
       tags: ["Computer Vision", "AI", "Image Processing", "Hardware"],
     },
     {
+      id: 11,
       title: "Smart Packaging With Shelf-Life Indicators",
       description: " Design packaging containing freshness sensors that indicate spoilage levels using color-change labels or NFC data. ",
       category: "Hardware",
@@ -106,6 +117,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "NFC", "Sensors", "Packaging"],
     },
     {
+      id: 12,
       title: "Blockchain-Based Farm-to-Fork Traceability System",
       description: "Create a blockchain solution that logs harvesting, handling, and logistics data to ensure transparent and tamper-proof traceability.",
       category: "Software",
@@ -115,6 +127,7 @@ const ProblemStatements = () => {
       tags: ["Blockchain", "Web3", "Traceability", "Smart Contracts"],
     },
     {
+      id: 13,
       title: "AI Demand Forecasting for Local Markets",
       description: " Develop a predictive model that analyzes demand trends, festival cycles, and weather patterns to help farmers plan crops and reduce waste. ",
       category: "Software",
@@ -124,6 +137,7 @@ const ProblemStatements = () => {
       tags: ["AI", "Time Series", "Forecasting", "ML"],
     },
     {
+      id: 14,
       title: "Farmer-to-Consumer Marketplace With Logistics Optimization",
       description: " Build a digital marketplace for direct sales, integrating real-time inventory, pricing, and optimized delivery routing.",
       category: "Software",
@@ -136,6 +150,7 @@ const ProblemStatements = () => {
 
     // === Farmer Empowerment ===
     {
+      id: 15,
       title: "Handheld Crop Diagnosis Device",
       description: "Design a portable device using sensors and LEDs to detect early plant health issues without requiring internet connectivity.",
       category: "Hardware",
@@ -145,6 +160,7 @@ const ProblemStatements = () => {
       tags: ["Embedded", "Sensors", "Offline AI", "Mobile"],
     },
     {
+      id: 16,
       title: "Affordable Smart Weather Station for Rural Areas",
       description: " Create a compact weather monitoring station measuring wind, humidity, rainfall, and temperature, delivering hyperlocal updates. ",
       category: "Hardware",
@@ -154,6 +170,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "Weather", "Solar", "Low-cost"],
     },
     {
+      id: 17,
       title: "Solar-Powered Community Information Kiosk",
       description: " Develop a standalone solar-powered kiosk offering advisories, government scheme updates, and farming best practices in rural areas. ",
       category: "Hardware",
@@ -163,6 +180,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "Offline", "Solar", "Kiosk"],
     },
     {
+      id: 18,
       title: "Multilingual Farmer Advisory & Chat Assistant",
       description: "Build an AI chatbot offering guidance on crop health, schemes, and best practices in multiple regional languages. ",
       category: "Software",
@@ -172,6 +190,7 @@ const ProblemStatements = () => {
       tags: ["AI", "NLP", "Multilingual", "Chatbot", "Mobile"],
     },
     {
+      id: 19,
       title: "Digital Farmer Learning Platform With AR/VR Simulations",
       description: "Create interactive modules teaching irrigation planning, pest identification, and safety through AR/VR-based demonstrations. ",
       category: "Software",
@@ -181,6 +200,7 @@ const ProblemStatements = () => {
       tags: ["AR/VR", "EdTech", "Mobile", "Training"],
     },
     {
+      id: 20,
       title: "Community Knowledge-Sharing App",
       description: " Develop a platform where farmers share images, solve problems collaboratively, and engage with experts. ",
       category: "Software",
@@ -193,6 +213,7 @@ const ProblemStatements = () => {
 
     // === Green Growth ===
     {
+      id: 21,
       title: "IoT Water Efficiency Controller for Irrigation Systems",
       description: "Design a controller that adjusts irrigation based on soil moisture and weather predictions to reduce wastage. ",
       category: "Hardware",
@@ -202,6 +223,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "Water Conservation", "Automation", "Sensors"],
     },
     {
+      id: 22,
       title: "Portable Soil Health Scanner",
       description: "Build a handheld scanner using spectroscopy or sensors to instantly measure soil carbon, moisture, and nutrients. ",
       category: "Hardware",
@@ -211,6 +233,7 @@ const ProblemStatements = () => {
       tags: ["Sensors", "Soil", "Spectroscopy", "Hardware"],
     },
     {
+      id: 23,
       title: "Smart Carbon Capture & Monitoring Device",
       description: " Create a device to track soil carbon levels, biomass, and CO2 absorption for regenerative farming verification. ",
       category: "Hardware",
@@ -220,6 +243,7 @@ const ProblemStatements = () => {
       tags: ["IoT", "Carbon", "Sustainability", "Sensors"],
     },
     {
+      id: 24,
       title: "Soil Health Digital Dashboard With Regeneration Insights",
       description: "Develop a platform visualizing soil changes over time, highlighting regeneration opportunities. ",
       category: "Software",
@@ -229,6 +253,7 @@ const ProblemStatements = () => {
       tags: ["Dashboard", "Data Visualization", "Sustainability", "Web"],
     },
     {
+      id: 25,
       title: "Carbon-Credit Verification & Trading Platform",
       description: " Build a system estimating carbon sequestration from sustainable farming practices and enabling carbon-credit trading. ",
       category: "Software",
@@ -238,6 +263,7 @@ const ProblemStatements = () => {
       tags: ["Blockchain", "Carbon Credits", "Sustainability", "Web3"],
     },
     {
+      id: 26,
       title: "Water Usage Prediction & Sustainability Analyzer",
       description: " Create an AI model predicting seasonal water requirements and sustainability risks. ",
       category: "Software",
@@ -281,8 +307,8 @@ const ProblemStatements = () => {
     if (currentPage > totalPages) setCurrentPage(totalPages);
   }, [totalPages]);
 
-  const toggleRow = (idx) => {
-    setExpandedRow(expandedRow === idx ? null : idx);
+  const toggleRow = (id) => {
+    setExpandedRow(expandedRow === id ? null : id);
   };
 
   const getTagColor = (tag) => {
@@ -343,18 +369,17 @@ const ProblemStatements = () => {
             </thead>
 
             <tbody>
-              {currentItems.map((item, idx) => {
-                const absIndex = startIndex + idx;
-                const isExpanded = expandedRow === absIndex;
+              {currentItems.map((item, id) => {
+                const isExpanded = expandedRow === item.id;
 
                 return (
-                  <React.Fragment key={absIndex}>
+                  <React.Fragment key={item.id}>
                     <tr className="hover:bg-neutral-800 transition">
-                      <td className="p-4 border border-neutral-700 align-top">{absIndex + 1}</td>
+                      <td className="p-4 border border-neutral-700 align-top">{item.id}</td>
 
                       <td
                         className="p-4 border border-neutral-700 cursor-pointer"
-                        onClick={() => toggleRow(absIndex)}
+                        onClick={() => toggleRow(item.id)}
                       >
                         <span className="text-lime-300 font-medium underline decoration-dotted">
                           {item.title}

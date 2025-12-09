@@ -332,12 +332,12 @@ const Timeline = () => {
     description: 'Organizing committee visit KIAAR, Karnataka to interact with farmers and understand real-world agricultural challenges, followed by expert speaker sessions from industry professionals.',
   },
   {
-    date: '6th - 7th Feb 2026',
+    date: '5th - 6th Feb 2026',
     title: 'Phase 2: Agri-Tech Hackathon Sprint',
     description: 'The main event at KJSSE! Engineers, startups, industry professionals, and students collaborate to develop smart, sustainable AI and IoT-based solutions for agriculture.',
   },
   {
-    date: '7th Feb 2026',
+    date: '6th Feb 2026',
     title: 'Winner Announcement',
     description: "Time's up! Final pitches, judging, and the crowning of champions.",
   }

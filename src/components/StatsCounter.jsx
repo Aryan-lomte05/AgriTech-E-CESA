@@ -116,8 +116,8 @@ const StatsCounter = () => {
     },
     {
       icon: Trophy,
-      value: 200000,
-      suffix: "",
+      value: 200,
+      suffix: "K",
       label: "Prize Pool (₹)",
       color: "from-yellow-400 to-orange-500",
       delay: 0.2,
