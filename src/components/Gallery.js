@@ -2,12 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
+
 const Gallery = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isMuted, setIsMuted] = useState(true);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+
 
   const items = [
     { src: '/gallery/img1.jpg', type: 'image' },
@@ -24,17 +26,18 @@ const Gallery = () => {
     { src: '/gallery/img12.jpg', type: 'image' },
     { src: '/gallery/img13.jpg', type: 'image' },
     { src: '/gallery/img14.jpg', type: 'image' },
-    { src: '/gallery/video1.mp4', type: 'video' },
-    { src: '/gallery/video2.mp4', type: 'video' },
   ];
+
 
   const handleNext = useCallback(() => {
     setSelectedIndex((prev) => (prev + 1) % items.length);
   }, [items.length]);
 
+
   const handlePrev = useCallback(() => {
     setSelectedIndex((prev) => (prev - 1 + items.length) % items.length);
   }, [items.length]);
+
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -44,16 +47,18 @@ const Gallery = () => {
       if (e.key === 'Escape') setSelectedIndex(null);
     };
 
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedIndex, handleNext, handlePrev]);
+
 
   return (
     <div className="min-h-screen bg-black">
       {/* HERO SECTION - Parallax */}
       <motion.div 
-        className="relative h-screen flex items-center justify-center overflow-hidden"
-        style={{ opacity }}
+        className="relative h-screen flex items-center justify-center overflow-hidden select-none"
+        style={{ opacity, cursor: 'default' }}
       >
         {/* Animated Background Grid */}
         <div className="absolute inset-0 opacity-10">
@@ -63,6 +68,7 @@ const Gallery = () => {
             backgroundSize: '50px 50px'
           }} />
         </div>
+
 
         {/* Floating Elements */}
         <motion.div
@@ -82,6 +88,7 @@ const Gallery = () => {
           transition={{ duration: 6, repeat: Infinity }}
         />
 
+
         {/* Title */}
         <div className="relative z-10 text-center px-4">
           <motion.div
@@ -89,7 +96,7 @@ const Gallery = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-7xl md:text-9xl font-black mb-6 tracking-tight">
+            <h1 className="text-7xl md:text-9xl font-black mb-6 tracking-tight" style={{ cursor: 'default' }}>
               <motion.span 
                 className="inline-block gradient-text"
                 initial={{ opacity: 0, y: 20 }}
@@ -104,6 +111,7 @@ const Gallery = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
+              style={{ cursor: 'default' }}
             >
               2025
             </motion.p>
@@ -112,36 +120,32 @@ const Gallery = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
+              style={{ cursor: 'default' }}
             >
               Glimpses of Innovation
             </motion.p>
           </motion.div>
 
+
           {/* Scroll Indicator */}
-          <motion.div
-            className="absolute bottom-20 left-1/2 -translate-x-1/2"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <div className="w-6 h-10 border-2 border-lime-400/50 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-2 bg-lime-400 rounded-full" />
-            </div>
-          </motion.div>
+          
         </div>
       </motion.div>
 
-      {/* GALLERY SECTION */}
-      <div className="relative px-4 md:px-8 py-20 bg-gradient-to-b from-black via-neutral-950 to-black">
+
+      {/* GALLERY SECTION - BETTER SPACING */}
+      <div className="relative px-4 md:px-8 py-12 md:py-16 lg:py-20 bg-gradient-to-b from-black via-neutral-950 to-black">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-12 lg:mb-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-4">The Experience</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">The Experience</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-lime-400 to-emerald-500 mx-auto" />
         </motion.div>
+
 
         {/* MASONRY GRID - Natural Aspect Ratios */}
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 max-w-[2000px] mx-auto">
@@ -162,44 +166,17 @@ const Gallery = () => {
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Image/Video */}
-              {item.type === 'image' ? (
-                <motion.img 
-                  src={item.src} 
-                  alt=""
-                  className="w-full h-auto block"
-                  loading="lazy"
-                  initial={{ scale: 1.1 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.6 }}
-                />
-              ) : (
-                <div className="relative">
-                  <video 
-                    src={item.src}
-                    className="w-full h-auto block"
-                    muted={isMuted}
-                    loop
-                    playsInline
-                    autoPlay={hoveredIndex === i}
-                  />
-                  {/* Play Overlay */}
-                  <AnimatePresence>
-                    {hoveredIndex !== i && (
-                      <motion.div
-                        className="absolute inset-0 flex items-center justify-center bg-black/40"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <div className="w-20 h-20 bg-lime-400 rounded-full flex items-center justify-center shadow-2xl shadow-lime-400/50">
-                          <Play size={32} className="text-black ml-1" fill="currentColor" />
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              )}
+              {/* Image */}
+              <motion.img 
+                src={item.src} 
+                alt=""
+                className="w-full h-auto block"
+                loading="lazy"
+                initial={{ scale: 1.1 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.6 }}
+              />
+
 
               {/* Hover Gradient Overlay */}
               <motion.div 
@@ -214,11 +191,13 @@ const Gallery = () => {
                 </div>
               </motion.div>
 
+
               {/* Glow Border on Hover */}
               <motion.div 
                 className="absolute inset-0 border-2 border-lime-400/0 group-hover:border-lime-400 rounded-2xl transition-all duration-300"
                 initial={false}
               />
+
 
               {/* Shine Effect */}
               <motion.div
@@ -236,9 +215,10 @@ const Gallery = () => {
           ))}
         </div>
 
-        {/* Load More Indicator (Optional) */}
+
+        {/* Load More Indicator */}
         <motion.div
-          className="text-center mt-20"
+          className="text-center mt-12 md:mt-16 lg:mt-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -248,6 +228,7 @@ const Gallery = () => {
           </p>
         </motion.div>
       </div>
+
 
       {/* LIGHTBOX - Premium Fullscreen */}
       <AnimatePresence>
@@ -261,92 +242,66 @@ const Gallery = () => {
           >
             {/* Close Button */}
             <motion.button 
-              className="absolute top-6 right-6 w-14 h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
+              className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 md:w-14 md:h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
               onClick={() => setSelectedIndex(null)}
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
             >
-              <X className="text-white group-hover:text-black transition-colors" size={28} />
+              <X className="text-white group-hover:text-black transition-colors" size={24} />
             </motion.button>
+
 
             {/* Navigation */}
             <motion.button 
-              className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
               onClick={(e) => { e.stopPropagation(); handlePrev(); }}
               whileHover={{ scale: 1.1, x: -5 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ChevronLeft className="text-white group-hover:text-black transition-colors" size={32} />
+              <ChevronLeft className="text-white group-hover:text-black transition-colors" size={28} />
             </motion.button>
 
+
             <motion.button 
-              className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
               onClick={(e) => { e.stopPropagation(); handleNext(); }}
               whileHover={{ scale: 1.1, x: 5 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ChevronRight className="text-white group-hover:text-black transition-colors" size={32} />
+              <ChevronRight className="text-white group-hover:text-black transition-colors" size={28} />
             </motion.button>
 
-            {/* Mute Toggle for Videos */}
-            {items[selectedIndex].type === 'video' && (
-              <motion.button
-                className="absolute top-6 right-24 w-14 h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
-                onClick={(e) => { e.stopPropagation(); setIsMuted(!isMuted); }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                {isMuted ? (
-                  <VolumeX className="text-white group-hover:text-black transition-colors" size={24} />
-                ) : (
-                  <Volume2 className="text-white group-hover:text-black transition-colors" size={24} />
-                )}
-              </motion.button>
-            )}
 
             {/* Content with Glow Effect */}
             <motion.div
-              className="relative w-full h-full flex items-center justify-center p-8"
+              className="relative w-full h-full flex items-center justify-center p-4 md:p-8"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {items[selectedIndex].type === 'video' ? (
-                <video 
-                  src={items[selectedIndex].src} 
-                  controls 
-                  autoPlay
-                  muted={isMuted}
-                  className="max-w-full max-h-full rounded-2xl"
-                  style={{ 
-                    objectFit: 'contain',
-                    boxShadow: '0 0 100px rgba(168, 255, 0, 0.3)'
-                  }}
-                />
-              ) : (
-                <motion.img 
-                  src={items[selectedIndex].src} 
-                  alt=""
-                  className="max-w-full max-h-full rounded-2xl"
-                  style={{ 
-                    objectFit: 'contain',
-                    boxShadow: '0 0 100px rgba(168, 255, 0, 0.3)'
-                  }}
-                  initial={{ scale: 0.95 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
+              <motion.img 
+                src={items[selectedIndex].src} 
+                alt=""
+                className="max-w-full max-h-full rounded-2xl"
+                style={{ 
+                  objectFit: 'contain',
+                  boxShadow: '0 0 100px rgba(168, 255, 0, 0.3)'
+                }}
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3 }}
+              />
             </motion.div>
 
+
             {/* Counter with Progress */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
-              <div className="px-8 py-4 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
-                <div className="flex items-center gap-4">
-                  <span className="text-white font-bold text-lg">{selectedIndex + 1}</span>
-                  <div className="w-32 h-1 bg-white/20 rounded-full overflow-hidden">
+            <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-30">
+              <div className="px-6 py-3 md:px-8 md:py-4 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <span className="text-white font-bold text-base md:text-lg">{selectedIndex + 1}</span>
+                  <div className="w-24 md:w-32 h-1 bg-white/20 rounded-full overflow-hidden">
                     <motion.div 
                       className="h-full bg-lime-400"
                       initial={{ width: 0 }}
@@ -354,7 +309,7 @@ const Gallery = () => {
                       transition={{ duration: 0.3 }}
                     />
                   </div>
-                  <span className="text-gray-400 font-medium text-lg">{items.length}</span>
+                  <span className="text-gray-400 font-medium text-base md:text-lg">{items.length}</span>
                 </div>
               </div>
             </div>
@@ -364,5 +319,6 @@ const Gallery = () => {
     </div>
   );
 };
+
 
 export default Gallery;
