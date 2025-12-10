@@ -6,16 +6,13 @@ const rulesData = {
   "Registration Questions": [
     {
       question: "What is the competition registration deadline, and how do I register?",
-      answer: 'The registration deadline is 5th Jan, 2026. You can register <a href="https://unstop.com/hackathons/agri-tech-hackathon-k-j-somaiya-college-of-engineering-kjsce-mumbai-1378830" target="_blank" rel="noopener noreferrer" class="text-lime-400 hover:text-lime-300 underline">here</a>.'
+      answer: 'The registration deadline is 5th Jan, 2026. You can register <a href="https://unstop.com/hackathons/agri-tech-hackathon-2026-k-j-somaiya-college-of-engineering-kjsce-vidyavihar-1604393/amp" target="_blank" rel="noopener noreferrer" class="text-lime-400 hover:text-lime-300 underline">here</a>.'
     },
     {
       question: "Where is the hackathon being held?",
       answer: "The event will be held at K. J. Somaiya School of Engineering, Vidyavihar, Mumbai."
     },
-    {
-      question: "Can I get help with forming a team?",
-      answer: "Yes, you can contact the organizers for assistance or join the networking groups provided after registration."
-    },
+ 
     {
       question: "Who can participate?",
       answer: "Undergraduate students from any discipline are eligible to participate. Teams can include members from different colleges."
