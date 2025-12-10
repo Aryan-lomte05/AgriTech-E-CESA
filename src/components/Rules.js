@@ -40,7 +40,7 @@ const rulesData = {
   "Technical Questions": [
     {
       question: "What are the development topics for this hackathon?",
-      answer: "The tracks include Precision Agriculture, Supply Chain Optimization, Farmers' Empowerment, Biofuel Innovation, and Open Innovation in Agriculture."
+      answer: "The tracks include Green Growth, Agri-Market Access, Farmers' Empowerment and Next Gen AgriTech"
     },
     {
       question: "What technologies are recommended for project development?",
