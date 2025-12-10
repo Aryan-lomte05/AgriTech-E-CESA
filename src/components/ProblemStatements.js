@@ -10,7 +10,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT25001",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "Embedded", "Sensors", "Cloud", "Firmware", "OTA"],
     },
     {
@@ -20,7 +20,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT25002",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["Robotics", "Computer Vision", "AI", "GPS", "Autonomous"],
     },
     {
@@ -30,7 +30,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT25003",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["Drone", "Computer Vision", "AI", "Solar", "Image Processing"],
     },
     {
@@ -40,7 +40,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT25004",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["Drone", "AI", "Control Systems", "IoT", "Precision Ag"],
     },
     {
@@ -50,7 +50,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT25005",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["Drone", "Robotics", "GPS", "Automation"],
     },
     {
@@ -60,7 +60,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT25006",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["AI", "Machine Learning", "Computer Vision", "Deep Learning", "Mobile"],
     },
     {
@@ -70,7 +70,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT25007",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["Digital Twin", "Simulation", "Data Visualization", "ML"],
     },
     {
@@ -80,7 +80,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT25008",
       theme: "Next-Gen Agri-Tech",
-      deadline: "15 January 2026",
+      
       tags: ["Machine Learning", "Predictive Analytics", "Data Science", "Dashboard"],
     },
 
@@ -93,7 +93,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT35001",
       theme: "Agri-Market Access",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "Sensors", "Cold Chain", "Automation"],
     },
     {
@@ -103,7 +103,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT35002",
       theme: "Agri-Market Access",
-      deadline: "15 January 2026",
+      
       tags: ["Computer Vision", "AI", "Image Processing", "Hardware"],
     },
     {
@@ -113,7 +113,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT35003",
       theme: "Agri-Market Access",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "NFC", "Sensors", "Packaging"],
     },
     {
@@ -123,7 +123,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT35004",
       theme: "Agri-Market Access",
-      deadline: "15 January 2026",
+      
       tags: ["Blockchain", "Web3", "Traceability", "Smart Contracts"],
     },
     {
@@ -133,7 +133,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT35005",
       theme: "Agri-Market Access",
-      deadline: "15 January 2026",
+      
       tags: ["AI", "Time Series", "Forecasting", "ML"],
     },
     {
@@ -143,7 +143,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT35006",
       theme: "Agri-Market Access",
-      deadline: "15 January 2026",
+      
       tags: ["Full Stack", "E-commerce", "Logistics", "Optimization"],
     },
 
@@ -156,7 +156,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT45001",
       theme: "Farmer Empowerment",
-      deadline: "15 January 2026",
+      
       tags: ["Embedded", "Sensors", "Offline AI", "Mobile"],
     },
     {
@@ -166,7 +166,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT45002",
       theme: "Farmer Empowerment",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "Weather", "Solar", "Low-cost"],
     },
     {
@@ -176,7 +176,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT45003",
       theme: "Farmer Empowerment",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "Offline", "Solar", "Kiosk"],
     },
     {
@@ -186,7 +186,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT45004",
       theme: "Farmer Empowerment",
-      deadline: "15 January 2026",
+      
       tags: ["AI", "NLP", "Multilingual", "Chatbot", "Mobile"],
     },
     {
@@ -196,7 +196,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT45005",
       theme: "Farmer Empowerment",
-      deadline: "15 January 2026",
+      
       tags: ["AR/VR", "EdTech", "Mobile", "Training"],
     },
     {
@@ -206,7 +206,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT45006",
       theme: "Farmer Empowerment",
-      deadline: "15 January 2026",
+      
       tags: ["Social App", "Offline", "Community", "Mobile"],
     },
 
@@ -219,7 +219,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT55001",
       theme: "Green Growth",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "Water Conservation", "Automation", "Sensors"],
     },
     {
@@ -229,7 +229,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT55002",
       theme: "Green Growth",
-      deadline: "15 January 2026",
+      
       tags: ["Sensors", "Soil", "Spectroscopy", "Hardware"],
     },
     {
@@ -239,7 +239,7 @@ const ProblemStatements = () => {
       category: "Hardware",
       psNumber: "AGT55003",
       theme: "Green Growth",
-      deadline: "15 January 2026",
+      
       tags: ["IoT", "Carbon", "Sustainability", "Sensors"],
     },
     {
@@ -249,7 +249,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT55004",
       theme: "Green Growth",
-      deadline: "15 January 2026",
+      
       tags: ["Dashboard", "Data Visualization", "Sustainability", "Web"],
     },
     {
@@ -259,7 +259,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT55005",
       theme: "Green Growth",
-      deadline: "15 January 2026",
+      
       tags: ["Blockchain", "Carbon Credits", "Sustainability", "Web3"],
     },
     {
@@ -269,7 +269,7 @@ const ProblemStatements = () => {
       category: "Software",
       psNumber: "AGT55006",
       theme: "Green Growth",
-      deadline: "15 January 2026",
+      
       tags: ["AI", "Water", "Sustainability", "Predictive"],
     },
   ];
