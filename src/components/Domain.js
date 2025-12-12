@@ -45,7 +45,7 @@ const FlipCard = ({ image, problemStatement, details, icon: Icon, index }) => {
         {/* Back Side */}
         <div
           className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-neutral-900 to-black border-2 border-lime-400 p-6"
-          style={{ 
+          style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)'
           }}
@@ -55,7 +55,7 @@ const FlipCard = ({ image, problemStatement, details, icon: Icon, index }) => {
               <Icon className="text-lime-400" size={32} />
               <h3 className="text-xl font-bold gradient-text">{problemStatement}</h3>
             </div>
-            
+
             <div className="space-y-3">
               {details.map((detail, idx) => (
                 <motion.div
@@ -134,7 +134,7 @@ const Domain = () => {
         { title: "🤖 Computer Vision and Autonomous Robots", desc: "Autonomous rovers and solar powered drones" },
         { title: "📡 IoT and AI", desc: "Multi-sensor crop monitors, AI disease identification and farm digital twins" },
         { title: "📈 Predictive Analytics", desc: "ML models for efficient resource allocation in energy crops." },
-        
+
       ],
     },
     {
@@ -149,7 +149,33 @@ const Domain = () => {
         { title: "🌦️ Localized Weather Advisory", desc: "Compact weather stations via SMS/app." },
       ],
     },
-    
+    //ADDING NEW CARD FOR INNOVATION
+    {
+      src: require("../assets/images/innovation.jpg"),
+      alt: "Open Innovation",
+      problemStatement: "Open Innovation",
+      icon: Lightbulb,
+      details: [
+        {
+          title: "💡 Tagline",
+          desc: "Innovate beyond boundaries — your idea, your solution."
+        },
+        {
+          title: "🎯 Focus",
+          desc: "Participant-driven ideas in agriculture, sustainability, AI, IoT, Robotics, Data Science, Blockchain, Climate-Tech, Rural Empowerment, and Agri-FinTech."
+        },
+        {
+          title: "🚀 Scope",
+          desc: "Tools, applications, value-chain tech, climate-resilient solutions, market linkage, and farmer-centric innovations."
+        },
+        {
+          title: "📌 Option",
+          desc: "Teams may also choose from official pre-listed problem statements."
+        }
+
+
+      ],
+    }
   ];
 
   return (
