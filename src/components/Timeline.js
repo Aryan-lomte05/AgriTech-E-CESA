@@ -317,7 +317,8 @@ const Timeline = () => {
     description: 'Registrations go live and idea submission begins. Get ready to showcase your innovative ideas!',
   },
   {
-    date: '5th Jan 2026',
+    // DEADLINE EXTENDED
+    date: '11th Jan 2026',
     title: 'Submission Deadline',
     description: "Final day to submit your groundbreaking ideas. Don't miss this deadline!",
   },

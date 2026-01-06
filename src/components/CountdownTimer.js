@@ -95,27 +95,23 @@ const CalendarNumber = ({ number, label }) => (
 
 const Header = () => {
   const calculateTimeLeft = () => {
-    const difference = +new Date('2026-03-11T00:00:00') - +new Date();
-    let timeLeft = {};
+  const difference = +new Date(2026, 0, 11, 23, 59, 59) - +new Date();
+  let timeLeft = {};
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    } else {
-      timeLeft = {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-      };
-    }
+  if (difference > 0) {
+    timeLeft = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  } else {
+    timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  }
 
-    return timeLeft;
-  };
+  return timeLeft;
+};
+
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
