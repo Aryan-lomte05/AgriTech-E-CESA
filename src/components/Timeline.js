@@ -323,7 +323,7 @@ const Timeline = () => {
     description: "Final day to submit your groundbreaking ideas. Don't miss this deadline!",
   },
   {
-    date: '15th Jan 2026',
+    date: '22nd Jan 2026',
     title: 'Selection Results Announcement',
     description: 'The moment of truth! Find out if your idea has been selected for the next phase.',
   },
