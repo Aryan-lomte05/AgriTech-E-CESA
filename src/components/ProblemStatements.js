@@ -305,7 +305,7 @@ const ProblemStatements = () => {
 
   useEffect(() => {
     if (currentPage > totalPages) setCurrentPage(totalPages);
-  }, [totalPages]);
+  }, [currentPage, totalPages]);
 
   const toggleRow = (id) => {
     setExpandedRow(expandedRow === id ? null : id);
@@ -514,9 +514,8 @@ const ProblemStatements = () => {
           <button
             onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
             disabled={currentPage === 1}
-            className={`px-6 py-3 rounded-lg border ${
-              currentPage === 1 ? "opacity-50" : "hover:bg-neutral-800"
-            }`}
+            className={`px-6 py-3 rounded-lg border ${currentPage === 1 ? "opacity-50" : "hover:bg-neutral-800"
+              }`}
           >
             Previous
           </button>
@@ -530,9 +529,8 @@ const ProblemStatements = () => {
               setCurrentPage((p) => Math.min(p + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className={`px-6 py-3 rounded-lg border ${
-              currentPage === totalPages ? "opacity-50" : "hover:bg-neutral-800"
-            }`}
+            className={`px-6 py-3 rounded-lg border ${currentPage === totalPages ? "opacity-50" : "hover:bg-neutral-800"
+              }`}
           >
             Next
           </button>

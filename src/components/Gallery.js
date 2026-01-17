@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import {
+  X, ChevronLeft, ChevronRight, //Play, Pause, Volume2, VolumeX
+} from 'lucide-react';
 
 
 const Gallery = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isMuted, setIsMuted] = useState(true);
+  // const [isMuted, setIsMuted] = useState(true);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
@@ -56,7 +58,7 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* HERO SECTION - Parallax */}
-      <motion.div 
+      <motion.div
         className="relative h-screen flex items-center justify-center overflow-hidden select-none"
         style={{ opacity, cursor: 'default' }}
       >
@@ -73,7 +75,7 @@ const Gallery = () => {
         {/* Floating Elements */}
         <motion.div
           className="absolute top-20 left-20 w-32 h-32 bg-lime-400/10 rounded-full blur-3xl"
-          animate={{ 
+          animate={{
             y: [0, 30, 0],
             scale: [1, 1.2, 1]
           }}
@@ -81,7 +83,7 @@ const Gallery = () => {
         />
         <motion.div
           className="absolute bottom-20 right-20 w-40 h-40 bg-emerald-400/10 rounded-full blur-3xl"
-          animate={{ 
+          animate={{
             y: [0, -40, 0],
             scale: [1, 1.3, 1]
           }}
@@ -97,7 +99,7 @@ const Gallery = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-7xl md:text-9xl font-black mb-6 tracking-tight" style={{ cursor: 'default' }}>
-              <motion.span 
+              <motion.span
                 className="inline-block gradient-text"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -106,7 +108,7 @@ const Gallery = () => {
                 AGRI-TECH
               </motion.span>
             </h1>
-            <motion.p 
+            <motion.p
               className="text-4xl md:text-6xl font-bold text-lime-400 mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -115,7 +117,7 @@ const Gallery = () => {
             >
               2025
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-2xl md:text-3xl text-gray-400 font-light"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -128,7 +130,7 @@ const Gallery = () => {
 
 
           {/* Scroll Indicator */}
-          
+
         </div>
       </motion.div>
 
@@ -157,7 +159,7 @@ const Gallery = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: i * 0.05 }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.03,
                 zIndex: 20,
                 transition: { duration: 0.3 }
@@ -167,8 +169,8 @@ const Gallery = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Image */}
-              <motion.img 
-                src={item.src} 
+              <motion.img
+                src={item.src}
                 alt=""
                 className="w-full h-auto block"
                 loading="lazy"
@@ -179,7 +181,7 @@ const Gallery = () => {
 
 
               {/* Hover Gradient Overlay */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 initial={false}
               >
@@ -193,7 +195,7 @@ const Gallery = () => {
 
 
               {/* Glow Border on Hover */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 border-2 border-lime-400/0 group-hover:border-lime-400 rounded-2xl transition-all duration-300"
                 initial={false}
               />
@@ -241,7 +243,7 @@ const Gallery = () => {
             onClick={() => setSelectedIndex(null)}
           >
             {/* Close Button */}
-            <motion.button 
+            <motion.button
               className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 md:w-14 md:h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
               onClick={() => setSelectedIndex(null)}
               whileHover={{ scale: 1.1, rotate: 90 }}
@@ -252,7 +254,7 @@ const Gallery = () => {
 
 
             {/* Navigation */}
-            <motion.button 
+            <motion.button
               className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
               onClick={(e) => { e.stopPropagation(); handlePrev(); }}
               whileHover={{ scale: 1.1, x: -5 }}
@@ -262,7 +264,7 @@ const Gallery = () => {
             </motion.button>
 
 
-            <motion.button 
+            <motion.button
               className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white/5 hover:bg-lime-400 rounded-full flex items-center justify-center group backdrop-blur-xl border border-white/10 transition-all z-30"
               onClick={(e) => { e.stopPropagation(); handleNext(); }}
               whileHover={{ scale: 1.1, x: 5 }}
@@ -281,11 +283,11 @@ const Gallery = () => {
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <motion.img 
-                src={items[selectedIndex].src} 
+              <motion.img
+                src={items[selectedIndex].src}
                 alt=""
                 className="max-w-full max-h-full rounded-2xl"
-                style={{ 
+                style={{
                   objectFit: 'contain',
                   boxShadow: '0 0 100px rgba(168, 255, 0, 0.3)'
                 }}
@@ -302,7 +304,7 @@ const Gallery = () => {
                 <div className="flex items-center gap-3 md:gap-4">
                   <span className="text-white font-bold text-base md:text-lg">{selectedIndex + 1}</span>
                   <div className="w-24 md:w-32 h-1 bg-white/20 rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       className="h-full bg-lime-400"
                       initial={{ width: 0 }}
                       animate={{ width: `${((selectedIndex + 1) / items.length) * 100}%` }}
