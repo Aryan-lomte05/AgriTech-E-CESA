@@ -10,7 +10,7 @@ const CountdownUnit = ({ value, label, icon }) => {
     >
       {/* Glowing background */}
       <div className="absolute inset-0 bg-gradient-to-br from-lime-400/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-      
+
       {/* Main card */}
       <div className="relative glass-card px-6 py-4 md:px-8 md:py-6 rounded-2xl border-2 border-lime-400/30 group-hover:border-lime-400 transition-all min-w-[100px] md:min-w-[140px]">
         {/* Icon floating above */}
@@ -65,21 +65,21 @@ const CountdownUnit = ({ value, label, icon }) => {
 
 const FlipCountdown = () => {
   const calculateTimeLeft = () => {
-  const targetDate = new Date(2026, 0, 11, 23, 59, 59).getTime();
-  const now = new Date().getTime();
-  const difference = targetDate - now;
+    const targetDate = new Date(2026, 1, 5, 8, 59, 59).getTime();
+    const now = new Date().getTime();
+    const difference = targetDate - now;
 
-  if (difference <= 0) {
-    return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  }
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
 
-  return {
-    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((difference / (1000 * 60)) % 60),
-    seconds: Math.floor((difference / 1000) % 60),
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / (1000 * 60)) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
   };
-};
 
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
@@ -152,32 +152,7 @@ const FlipCountdown = () => {
       </div>
 
       {/* Urgency indicator when time is low */}
-      {timeLeft.days <= 7 && (
-        <motion.div
-          className="mt-6 text-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <motion.div
-            className="inline-block glass-card px-6 py-3 border-2 border-red-500/50 rounded-full"
-            animate={{
-              boxShadow: [
-                "0 0 20px rgba(239, 68, 68, 0.3)",
-                "0 0 40px rgba(239, 68, 68, 0.6)",
-                "0 0 20px rgba(239, 68, 68, 0.3)",
-              ],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-            }}
-          >
-            <span className="text-red-400 font-bold text-sm md:text-base flex items-center gap-2">
-              ⚠️ Only {timeLeft.days} days left! Register now! ⚠️
-            </span>
-          </motion.div>
-        </motion.div>
-      )}
+
     </div>
   );
 };
