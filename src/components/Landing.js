@@ -515,8 +515,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ListTodo } from "lucide-react";
-import Confetti from "react-confetti";
-import { useTheme } from "../hooks/useTheme";
+
 import FlipCountdown from "./FlipCountdown";
 
 // Import images
@@ -535,7 +534,6 @@ import Comet from "../assets/images/comet.png";
 const Landing = () => {
   const { theme, toggleTheme } = useTheme();
   const [showPopup, setShowPopup] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
   const isNight = theme === "dark";
 
   return (
@@ -752,16 +750,7 @@ const Landing = () => {
         )}
       </AnimatePresence>
 
-      {/* Confetti */}
-      {showConfetti && (
-        <Confetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          recycle={false}
-          numberOfPieces={500}
-          gravity={0.3}
-        />
-      )}
+
     </div>
   );
 };
