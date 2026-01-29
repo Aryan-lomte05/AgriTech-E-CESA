@@ -514,7 +514,7 @@
 // export default Landing;
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sparkles } from "lucide-react";
+import { X, ListTodo } from "lucide-react";
 import Confetti from "react-confetti";
 import { useTheme } from "../hooks/useTheme";
 import FlipCountdown from "./FlipCountdown";
@@ -681,7 +681,7 @@ const Landing = () => {
           {/* Countdown */}
           <div className="space-y-4 pt-4">
             <p className="text-xs md:text-sm lg:text-base font-medium tracking-wider text-white/80">
-              REGISTRATION CLOSES IN
+              HACKATHON STARTS IN
             </p>
             <FlipCountdown />
           </div>
@@ -690,20 +690,17 @@ const Landing = () => {
           <motion.button
             onClick={() => {
               window.open(
-                "https://unstop.com/o/WPmtVrJ?utm_medium=Share&utm_source=aryanlom6154&utm_campaign=Online_coding_challenge",
-                "_blank",
-                "noopener,noreferrer"
+                "/problem-statements",
+                "_self"
               );
-              setShowConfetti(true);
-              setTimeout(() => setShowConfetti(false), 5000);
             }}
             className="group relative px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-lime-400 to-emerald-500 text-black font-bold text-base md:text-lg rounded-full overflow-hidden shadow-lg hover:shadow-lime-500/50 transition-all duration-300 mt-6"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
             <span className="relative z-10 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
-              REGISTER NOW
+              <ListTodo className="w-4 h-4 md:w-5 md:h-5" />
+              VIEW PROBLEM STATEMENTS
             </span>
           </motion.button>
         </motion.div>

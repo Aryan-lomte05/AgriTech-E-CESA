@@ -543,10 +543,14 @@ const ProblemStatements = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [expandedRow, setExpandedRow] = useState(null);
+  const [showNewOnly, setShowNewOnly] = useState(false);
 
   const itemsPerPage = 10;
 
   const filteredData = problemData.filter((item) => {
+    // New Filter Logic
+    if (showNewOnly && !item.isNew) return false;
+
     const q = search.toLowerCase().trim();
     if (!q) return true;
     const tagsStr = item.tags.join(" ").toLowerCase();
@@ -684,9 +688,21 @@ const ProblemStatements = () => {
 
       <div className="w-full max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
-          <div className="text-lg font-semibold">
-            Total Problems: {problemData.length} | Showing:{" "}
-            {filteredData.length}
+          <div className="flex flex-col gap-2">
+            <div className="text-lg font-semibold">
+              Total Problems: {problemData.length} | Showing:{" "}
+              {filteredData.length}
+            </div>
+
+            <button
+              onClick={() => setShowNewOnly(!showNewOnly)}
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition bg-neutral-800 border ${showNewOnly
+                ? "border-lime-400 text-lime-400"
+                : "border-neutral-700 text-neutral-400 hover:text-white"
+                }`}
+            >
+              {showNewOnly ? "Show All Problems" : "Show New Problems Only"}
+            </button>
           </div>
 
           <input
@@ -696,9 +712,6 @@ const ProblemStatements = () => {
             onChange={(e) => setSearch(e.target.value)}
             className="w-full md:w-96 px-5 py-3 bg-neutral-800 rounded-lg border border-neutral-700 focus:outline-none focus:border-lime-400 transition"
           />
-
-
-
         </div>
 
         <div className="overflow-x-auto rounded-lg border border-neutral-800">

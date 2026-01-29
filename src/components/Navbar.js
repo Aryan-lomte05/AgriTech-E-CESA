@@ -241,7 +241,7 @@
 // export default Navbar;
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, Info, Target, Clock, Trophy, FileText, Mail, Camera, ListTodo } from "lucide-react";
+import { Menu, X, Home, Info, Target, Clock, Trophy, Mail, Camera, ListTodo } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 import { useNavigate, useLocation } from "react-router-dom";
 
