@@ -21,6 +21,7 @@ import HarvestEasterEgg from "./components/HarvestEasterEgg";
 import Gallery from "./components/Gallery";
 
 import ProblemStatements from "./components/ProblemStatements";   // ← NEW IMPORT
+import ShortlistedTeams from "./components/ShortlistedTeams";
 
 // Home Page Component
 const HomePage = () => (
@@ -96,6 +97,14 @@ const App = () => {
               <>
                 <Navbar />
                 <ProblemStatements />
+                <Footer />
+              </>
+            } />
+
+            <Route path="/results" element={
+              <>
+                <Navbar />
+                <ShortlistedTeams />
                 <Footer />
               </>
             } />
