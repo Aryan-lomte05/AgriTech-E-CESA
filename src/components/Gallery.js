@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
   X,
@@ -77,7 +77,6 @@ const Gallery = () => {
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'slider'
   const [sliderIndex, setSliderIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.18], [1, 0]);
@@ -400,8 +399,6 @@ const Gallery = () => {
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5, delay: (index % 6) * 0.05 }}
                   className="mb-5 break-inside-avoid"
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div
                     onClick={() => setSelectedIndex(index)}

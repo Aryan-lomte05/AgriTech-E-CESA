@@ -517,7 +517,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ListTodo } from "lucide-react";
 import { useTheme } from "../hooks/useTheme";
 
-import FlipCountdown from "./FlipCountdown";
 
 // Import images
 import DayBg from "../assets/images/day.png";

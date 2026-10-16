@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Award, Medal, Star, Users, Cpu, Zap } from 'lucide-react';
+import { Trophy, Award, Medal, Star, Users } from 'lucide-react';
 
 const podiumOrder = [
   {
