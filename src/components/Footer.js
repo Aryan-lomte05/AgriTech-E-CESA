@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaInstagram, FaLinkedin, FaEnvelope, FaPhone, FaArrowUp } from 'react-icons/fa';
 
+// ---- Edit contacts here. Links (mailto:/tel:) are generated from `value`. ----
+// type: 'email' | 'phone'   |   label: optional name/role shown before the value
+const contacts = [
+  { type: 'email', value: 'eesa.engg@somaiya.edu' },
+  { type: 'email', value: 'aryan.lomte@somaiya.edu' },
+  { type: 'phone', value: '+91 7558497556' },
+];
+
+// Primary address used by the "Get in Touch" button
+const PRIMARY_EMAIL = 'eesa.engg@somaiya.edu';
+
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
 
@@ -61,35 +72,26 @@ const Footer = () => {
           >
             <h2 className="text-3xl font-bold gradient-text">Contact Us</h2>
             <div className="flex flex-col space-y-4">
-              <motion.a
-                href="mailto:eesa.engg@somaiya.edu"
-                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
-                whileHover={{ x: 5 }}
-              >
-                <FaEnvelope className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
-                <span className="text-base">eesa.engg@somaiya.edu</span>
-              </motion.a>
-              <motion.a
-                href="mailto:hrishkesh.c@somaiya.edu"
-                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
-                whileHover={{ x: 5 }}
-              >
-                <FaEnvelope className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
-                <span className="text-base">aryan.lomte@somaiya.edu</span>
-              </motion.a>
-              <motion.a
-                href="tel:+919969594585"
-                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
-                whileHover={{ x: 5 }}
-              >
-                <FaPhone className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
-                <span className="text-base">+91 7558497556</span>
-              </motion.a>
-              <motion.a
-                href="tel:+917208639630"
-                className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
-                whileHover={{ x: 5 }}
-              >
+              {contacts.map((c) => {
+                const Icon = c.type === 'email' ? FaEnvelope : FaPhone;
+                const href = c.type === 'email'
+                  ? `mailto:${c.value}`
+                  : `tel:${c.value.replace(/[^\d+]/g, '')}`;
+                return (
+                  <motion.a
+                    key={c.value}
+                    href={href}
+                    className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
+                    whileHover={{ x: 5 }}
+                  >
+                    <Icon className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
+                    <span className="text-base">
+                      {c.label && <span className="text-gray-300 font-medium">{c.label}: </span>}
+                      {c.value}
+                    </span>
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -136,7 +138,7 @@ const Footer = () => {
             >
               <p className="text-gray-400 mb-3 text-sm">Questions about the event?</p>
               <motion.a
-                href="mailto:eesa.engg@somaiya.edu"
+                href={`mailto:${PRIMARY_EMAIL}`}
                 className="btn-primary inline-block px-6 py-3 text-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
