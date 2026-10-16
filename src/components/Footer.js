@@ -75,7 +75,7 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
               >
                 <FaEnvelope className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
-                <span className="text-base">nathan.v@somaiya.edu</span>
+                <span className="text-base">aryan.lomte@somaiya.edu</span>
               </motion.a>
               <motion.a
                 href="tel:+919969594585"
@@ -83,16 +83,13 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
               >
                 <FaPhone className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
-                <span className="text-base">+91 7021316267</span>
+                <span className="text-base">+91 7558497556</span>
               </motion.a>
               <motion.a
                 href="tel:+917208639630"
                 className="flex items-center gap-3 text-gray-400 hover:text-lime-400 transition-all group"
                 whileHover={{ x: 5 }}
               >
-                <FaPhone className="flex-shrink-0 text-lime-400 group-hover:scale-125 transition-transform" size={20} />
-                <span className="text-base">+91 9820279762</span>
-              </motion.a>
             </div>
           </motion.div>
 
