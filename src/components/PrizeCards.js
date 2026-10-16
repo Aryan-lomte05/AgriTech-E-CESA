@@ -1,401 +1,116 @@
-
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
-// import { Trophy, Award, Medal, Star, Sparkles, Crown } from 'lucide-react';
-
-// const PrizeCards = () => {
-//   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
-
-//   const prizes = [
-//     { 
-//       amount: "₹70,000", 
-//       rank: "First Runner Up", 
-//       position: "2nd", 
-//       height: "h-72", 
-//       icon: Award,
-//       gradient: "from-slate-300 via-slate-400 to-slate-500",
-//       glow: "shadow-slate-400/60",
-//       ringColor: "border-slate-400",
-//       delay: 0.2,
-//       scale: 0.95,
-//     },
-//     { 
-//       amount: "₹1,00,000", 
-//       rank: "Champion", 
-//       position: "1st", 
-//       height: "h-96", 
-//       icon: Trophy,
-//       gradient: "from-yellow-300 via-yellow-400 to-amber-500",
-//       glow: "shadow-yellow-400/80",
-//       ringColor: "border-yellow-400",
-//       delay: 0,
-//       scale: 1.1,
-//     },
-//     { 
-//       amount: "₹30,000", 
-//       rank: "Second Runner Up", 
-//       position: "3rd", 
-//       height: "h-64", 
-//       icon: Medal,
-//       gradient: "from-orange-400 via-orange-500 to-orange-600",
-//       glow: "shadow-orange-400/60",
-//       ringColor: "border-orange-400",
-//       delay: 0.4,
-//       scale: 0.9,
-//     },
-//   ];
-
-//   return (
-//     <div className="section-container relative overflow-hidden" ref={ref}>
-//       {/* Animated Floating Stars */}
-//       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-//         {[...Array(30)].map((_, i) => (
-//           <motion.div
-//             key={i}
-//             className="absolute"
-//             style={{
-//               left: `${Math.random() * 100}%`,
-//               top: `${Math.random() * 100}%`,
-//             }}
-//             animate={{
-//               y: [0, -30, 0],
-//               opacity: [0.2, 0.8, 0.2],
-//               scale: [1, 1.5, 1],
-//             }}
-//             transition={{
-//               duration: 3 + Math.random() * 2,
-//               repeat: Infinity,
-//               delay: Math.random() * 2,
-//             }}
-//           >
-//             <Star className="text-lime-400" size={8 + Math.random() * 12} fill="currentColor" />
-//           </motion.div>
-//         ))}
-//       </div>
-
-//       <motion.h1 
-//         className="faq-title mb-8"
-//         initial={{ opacity: 0, scale: 0.8 }}
-//         animate={inView ? { opacity: 1, scale: 1 } : {}}
-//         transition={{ duration: 0.6 }}
-//       >
-//         {['P','R','I','Z','E','S'].map((letter, i) => (
-//           <motion.span 
-//             key={i} 
-//             className="letter inline-block"
-//             animate={{
-//               y: [0, -10, 0],
-//             }}
-//             transition={{
-//               duration: 2,
-//               repeat: Infinity,
-//               delay: i * 0.1,
-//             }}
-//           >
-//             {letter}
-//           </motion.span>
-//         ))}
-//       </motion.h1>
-
-//       <motion.p
-//         className="text-center text-gray-400 text-lg mb-20"
-//         initial={{ opacity: 0 }}
-//         animate={inView ? { opacity: 1 } : {}}
-//       >
-//         Win big and showcase your innovation! 🎉
-//       </motion.p>
-
-//       {/* 3D Podium Stage */}
-//       <div className="flex justify-center items-end gap-8 md:gap-16 perspective-1000 relative px-4">
-//         {prizes.map((prize, index) => {
-//           const Icon = prize.icon;
-//           return (
-//             <motion.div
-//               key={index}
-//               className={`relative ${prize.height} w-48 md:w-80`}
-//               initial={{ opacity: 0, y: 200, rotateY: -30 }}
-//               animate={inView ? { 
-//                 opacity: 1, 
-//                 y: 0, 
-//                 rotateY: 0,
-//                 scale: prize.scale,
-//               } : {}}
-//               transition={{ 
-//                 duration: 1, 
-//                 delay: prize.delay,
-//                 type: "spring",
-//                 stiffness: 80,
-//               }}
-//               whileHover={{ 
-//                 y: -30, 
-//                 rotateY: prize.position === '1st' ? [0, 5, -5, 0] : [0, 3, -3, 0],
-//                 scale: prize.scale * 1.05,
-//                 transition: { duration: 0.5 }
-//               }}
-//               style={{ transformStyle: 'preserve-3d' }}
-//             >
-//               {/* Glowing Base Ring */}
-//               <motion.div
-//                 className={`absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-4 ${prize.glow} rounded-full blur-2xl`}
-//                 animate={{
-//                   opacity: [0.5, 1, 0.5],
-//                   scale: [1, 1.1, 1],
-//                 }}
-//                 transition={{
-//                   duration: 2,
-//                   repeat: Infinity,
-//                 }}
-//               />
-
-//               {/* 3D Podium Structure */}
-//               <div className={`absolute inset-0 bg-gradient-to-b ${prize.gradient} rounded-t-3xl ${prize.glow} shadow-2xl border-4 ${prize.ringColor} transform-gpu`}
-//                 style={{
-//                   transform: 'translateZ(20px)',
-//                 }}
-//               >
-//                 {/* Metallic Shine Effect */}
-//                 <motion.div
-//                   className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-black/20 rounded-t-3xl"
-//                   animate={{
-//                     backgroundPosition: ['0% 0%', '100% 100%'],
-//                   }}
-//                   transition={{
-//                     duration: 3,
-//                     repeat: Infinity,
-//                     repeatType: 'reverse',
-//                   }}
-//                 />
-
-//                 {/* Top Gloss */}
-//                 <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white/30 to-transparent rounded-t-3xl" />
-                
-//                 {/* Side Panels for 3D Effect */}
-//                 <div className="absolute -left-1 top-0 bottom-0 w-1 bg-black/30" />
-//                 <div className="absolute -right-1 top-0 bottom-0 w-1 bg-white/20" />
-//               </div>
-
-//               {/* Content on Podium */}
-//               <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 text-center"
-//                 style={{ transform: 'translateZ(40px)' }}
-//               >
-//                 {/* Crown for Winner */}
-//                 {prize.position === '1st' && (
-//                   <motion.div
-//                     className="absolute -top-16"
-//                     animate={{
-//                       y: [0, -10, 0],
-//                       rotate: [0, 5, -5, 0],
-//                     }}
-//                     transition={{
-//                       duration: 3,
-//                       repeat: Infinity,
-//                     }}
-//                   >
-//                     <Crown size={60} className="text-yellow-400 fill-yellow-400 drop-shadow-2xl" />
-//                   </motion.div>
-//                 )}
-
-//                 {/* Floating Icon with Rotation */}
-//                 <motion.div
-//                   animate={{
-//                     y: [0, -15, 0],
-//                     rotate: prize.position === '1st' ? [0, 360] : [0, 10, -10, 0],
-//                   }}
-//                   transition={{
-//                     y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-//                     rotate: { duration: prize.position === '1st' ? 10 : 4, repeat: Infinity },
-//                   }}
-//                   className="mb-6"
-//                 >
-//                   <Icon 
-//                     size={prize.position === '1st' ? 100 : 70} 
-//                     className="text-white drop-shadow-2xl" 
-//                     strokeWidth={1.5}
-//                   />
-//                 </motion.div>
-                
-//                 {/* Prize Amount with Pulsing Effect */}
-//                 <motion.div
-//                   className={`font-black text-white mb-4 drop-shadow-2xl ${
-//                     prize.position === '1st' ? 'text-5xl md:text-7xl' : 'text-4xl md:text-5xl'
-//                   }`}
-//                   animate={{
-//                     scale: prize.position === '1st' ? [1, 1.08, 1] : [1, 1.05, 1],
-//                   }}
-//                   transition={{
-//                     duration: 2,
-//                     repeat: Infinity,
-//                   }}
-//                 >
-//                   {prize.amount}
-//                 </motion.div>
-                
-//                 {/* Rank Label */}
-//                 <div className={`text-white/95 font-bold mb-3 ${
-//                   prize.position === '1st' ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'
-//                 }`}>
-//                   {prize.rank}
-//                 </div>
-                
-//                 {/* Position Badge with Sparkle */}
-//                 <motion.div 
-//                   className="relative"
-//                   whileHover={{ scale: 1.2, rotate: 360 }}
-//                   transition={{ duration: 0.6 }}
-//                 >
-//                   <div className={`text-7xl md:text-8xl font-black text-white/30 ${
-//                     prize.position === '1st' ? 'text-yellow-200/40' : ''
-//                   }`}>
-//                     {prize.position}
-//                   </div>
-                  
-//                   {prize.position === '1st' && (
-//                     <motion.div
-//                       className="absolute -top-2 -right-2"
-//                       animate={{ rotate: 360 }}
-//                       transition={{ duration: 3, repeat: Infinity }}
-//                     >
-//                       <Sparkles className="text-yellow-300" size={24} fill="currentColor" />
-//                     </motion.div>
-//                   )}
-//                 </motion.div>
-//               </div>
-
-//               {/* Floor Shadow */}
-//               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-black/40 blur-2xl rounded-full" />
-//             </motion.div>
-//           );
-//         })}
-//       </div>
-
-//       {/* Confetti Burst on View */}
-//       {inView && (
-//         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-//           {[...Array(50)].map((_, i) => (
-//             <motion.div
-//               key={i}
-//               className="absolute w-3 h-3 rounded-full"
-//               style={{
-//                 background: ['#a8ff00', '#ffd700', '#ff6b6b', '#4ecdc4', '#fff'][i % 5],
-//                 left: `${50 + (Math.random() - 0.5) * 60}%`,
-//                 top: '20%',
-//               }}
-//               initial={{ y: 0, opacity: 1, rotate: 0, scale: 0 }}
-//               animate={{
-//                 y: [0, 600],
-//                 opacity: [1, 1, 0],
-//                 rotate: 360 * (Math.random() > 0.5 ? 1 : -1) * Math.random() * 3,
-//                 scale: [0, 1, 0.5],
-//                 x: (Math.random() - 0.5) * 400,
-//               }}
-//               transition={{
-//                 duration: 2.5 + Math.random() * 1.5,
-//                 delay: Math.random() * 0.5,
-//                 ease: "easeOut",
-//               }}
-//             />
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default PrizeCards;
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Award, Medal, Star, Sparkles, Crown } from 'lucide-react';
+import { Trophy, Award, Medal, Star, Users, Cpu, Zap } from 'lucide-react';
+
+const podiumOrder = [
+  {
+    prize: '2nd Prize',
+    icon: Award,
+    gradient: 'from-slate-300 via-slate-400 to-slate-500',
+    ringColor: 'border-slate-400',
+    textColor: 'text-slate-300',
+    team: 'Team Troubleshoot\n& Team Circuit 25',
+    college: 'Joint Winners',
+    description: 'Innovative and impactful AgriTech solutions.',
+    badge: '🥈',
+    podiumHeight: 'h-32',
+    cardHeight: 'h-52',
+    delay: 0.2,
+    position: 'left',
+  },
+  {
+    prize: '1st Prize',
+    icon: Trophy,
+    gradient: 'from-yellow-300 via-yellow-400 to-amber-500',
+    ringColor: 'border-yellow-400',
+    textColor: 'text-yellow-400',
+    team: 'Team Snack Overflow',
+    college: 'D. J. Sanghvi College of Engineering',
+    description: 'Automated tractor-mounted sprinkler system for irrigation efficiency.',
+    badge: '🥇',
+    podiumHeight: 'h-48',
+    cardHeight: 'h-64',
+    delay: 0,
+    position: 'center',
+  },
+  {
+    prize: '3rd Prize',
+    icon: Medal,
+    gradient: 'from-orange-400 via-orange-500 to-orange-600',
+    ringColor: 'border-orange-400',
+    textColor: 'text-orange-400',
+    team: 'Team Kronix',
+    college: '',
+    description: 'Effective problem-solving and technical implementation.',
+    badge: '🥉',
+    podiumHeight: 'h-20',
+    cardHeight: 'h-44',
+    delay: 0.3,
+    position: 'right',
+  },
+];
+
+const specialAwards = [
+  {
+    award: 'Best Women-Led Team',
+    team: 'Team Weble',
+    description: 'Recognizing leadership and innovation by women participants.',
+    emoji: '⭐',
+    gradient: 'from-pink-400 to-rose-500',
+    delay: 0.1,
+  },
+  {
+    award: 'Best Hardware Implementation',
+    team: 'Team Black 2.0',
+    description: 'Outstanding hardware-based design and execution.',
+    emoji: '🔧',
+    gradient: 'from-cyan-400 to-blue-500',
+    delay: 0.2,
+  },
+  {
+    award: 'Special Recognition',
+    team: 'Team Mad Tech & Team Kisan Setu',
+    description: 'Practical field-oriented hardware solutions addressing agricultural challenges.',
+    emoji: '🌾',
+    gradient: 'from-lime-400 to-emerald-500',
+    delay: 0.3,
+  },
+];
 
 const PrizeCards = () => {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
-
-  const prizes = [
-    { 
-      amount: "₹70,000", 
-      rank: "First Runner Up", 
-      position: "2nd", 
-      height: "h-72", 
-      icon: Award,
-      gradient: "from-slate-300 via-slate-400 to-slate-500",
-      glow: "shadow-slate-400/60",
-      ringColor: "border-slate-400",
-      delay: 0.2,
-      scale: 0.95,
-    },
-    { 
-      amount: "₹1,00,000", 
-      rank: "Champion", 
-      position: "1st", 
-      height: "h-96", 
-      icon: Trophy,
-      gradient: "from-yellow-300 via-yellow-400 to-amber-500",
-      glow: "shadow-yellow-400/80",
-      ringColor: "border-yellow-400",
-      delay: 0,
-      scale: 1.1,
-    },
-    { 
-      amount: "₹30,000", 
-      rank: "Second Runner Up", 
-      position: "3rd", 
-      height: "h-64", 
-      icon: Medal,
-      gradient: "from-orange-400 via-orange-500 to-orange-600",
-      glow: "shadow-orange-400/60",
-      ringColor: "border-orange-400",
-      delay: 0.4,
-      scale: 0.9,
-    },
-  ];
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
     <div className="section-container relative overflow-hidden" ref={ref}>
-      {/* Animated Floating Stars */}
+      {/* Animated floating stars */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
+            style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
+            animate={{ y: [0, -25, 0], opacity: [0.1, 0.5, 0.1], scale: [1, 1.4, 1] }}
+            transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, delay: Math.random() * 2 }}
           >
-            <Star className="text-lime-400" size={8 + Math.random() * 12} fill="currentColor" />
+            <Star className="text-lime-400" size={5 + Math.random() * 9} fill="currentColor" />
           </motion.div>
         ))}
       </div>
 
-      <motion.h1 
-        className="faq-title mb-8"
+      {/* Title */}
+      <motion.h1
+        className="faq-title mb-4"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
       >
-        {['P','R','I','Z','E','S'].map((letter, i) => (
-          <motion.span 
-            key={i} 
+        {['W', 'I', 'N', 'N', 'E', 'R', 'S'].map((letter, i) => (
+          <motion.span
+            key={i}
             className="letter inline-block"
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.1,
-            }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
           >
             {letter}
           </motion.span>
@@ -403,319 +118,202 @@ const PrizeCards = () => {
       </motion.h1>
 
       <motion.p
-        className="text-center text-gray-400 text-base md:text-lg mb-12 md:mb-20 px-4"
+        className="text-center text-gray-400 text-base md:text-lg mb-12 px-4"
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
       >
-        Win big and showcase your innovation! 🎉
+        Congratulations to all our incredible winners! 🏆🎉
       </motion.p>
 
-      {/* DESKTOP: 3D Podium Stage */}
-      <div className="hidden md:flex justify-center items-end gap-8 md:gap-16 perspective-1000 relative px-4">
-        {prizes.map((prize, index) => {
-          const Icon = prize.icon;
+      {/* ── PODIUM ── */}
+      <div className="flex items-end justify-center gap-3 md:gap-6 max-w-4xl mx-auto px-4 mb-0">
+        {podiumOrder.map((winner) => {
+          const Icon = winner.icon;
+          const isCenter = winner.position === 'center';
           return (
             <motion.div
-              key={index}
-              className={`relative ${prize.height} w-48 md:w-80`}
-              initial={{ opacity: 0, y: 200, rotateY: -30 }}
-              animate={inView ? { 
-                opacity: 1, 
-                y: 0, 
-                rotateY: 0,
-                scale: prize.scale,
-              } : {}}
-              transition={{ 
-                duration: 1, 
-                delay: prize.delay,
-                type: "spring",
-                stiffness: 80,
-              }}
-              whileHover={{ 
-                y: -30, 
-                rotateY: prize.position === '1st' ? [0, 5, -5, 0] : [0, 3, -3, 0],
-                scale: prize.scale * 1.05,
-                transition: { duration: 0.5 }
-              }}
-              style={{ transformStyle: 'preserve-3d' }}
-            >
-              {/* Glowing Base Ring */}
-              <motion.div
-                className={`absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 h-4 ${prize.glow} rounded-full blur-2xl`}
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-              />
-
-              {/* 3D Podium Structure */}
-              <div className={`absolute inset-0 bg-gradient-to-b ${prize.gradient} rounded-t-3xl ${prize.glow} shadow-2xl border-4 ${prize.ringColor} transform-gpu`}
-                style={{
-                  transform: 'translateZ(20px)',
-                }}
-              >
-                {/* Metallic Shine Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-black/20 rounded-t-3xl"
-                  animate={{
-                    backgroundPosition: ['0% 0%', '100% 100%'],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                  }}
-                />
-
-                {/* Top Gloss */}
-                <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white/30 to-transparent rounded-t-3xl" />
-                
-                {/* Side Panels for 3D Effect */}
-                <div className="absolute -left-1 top-0 bottom-0 w-1 bg-black/30" />
-                <div className="absolute -right-1 top-0 bottom-0 w-1 bg-white/20" />
-              </div>
-
-              {/* Content on Podium */}
-              <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 text-center"
-                style={{ transform: 'translateZ(40px)' }}
-              >
-                {/* Crown for Winner */}
-                {prize.position === '1st' && (
-                  <motion.div
-                    className="absolute -top-16"
-                    animate={{
-                      y: [0, -10, 0],
-                      rotate: [0, 5, -5, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                    }}
-                  >
-                    <Crown size={60} className="text-yellow-400 fill-yellow-400 drop-shadow-2xl" />
-                  </motion.div>
-                )}
-
-                {/* Floating Icon with Rotation */}
-                <motion.div
-                  animate={{
-                    y: [0, -15, 0],
-                    rotate: prize.position === '1st' ? [0, 360] : [0, 10, -10, 0],
-                  }}
-                  transition={{
-                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                    rotate: { duration: prize.position === '1st' ? 10 : 4, repeat: Infinity },
-                  }}
-                  className="mb-6"
-                >
-                  <Icon 
-                    size={prize.position === '1st' ? 100 : 70} 
-                    className="text-white drop-shadow-2xl" 
-                    strokeWidth={1.5}
-                  />
-                </motion.div>
-                
-                {/* Prize Amount with Pulsing Effect */}
-                <motion.div
-                  className={`font-black text-white mb-4 drop-shadow-2xl ${
-                    prize.position === '1st' ? 'text-5xl md:text-7xl' : 'text-4xl md:text-5xl'
-                  }`}
-                  animate={{
-                    scale: prize.position === '1st' ? [1, 1.08, 1] : [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
-                >
-                  {prize.amount}
-                </motion.div>
-                
-                {/* Rank Label */}
-                <div className={`text-white/95 font-bold mb-3 ${
-                  prize.position === '1st' ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'
-                }`}>
-                  {prize.rank}
-                </div>
-                
-                {/* Position Badge with Sparkle */}
-                <motion.div 
-                  className="relative"
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <div className={`text-7xl md:text-8xl font-black text-white/30 ${
-                    prize.position === '1st' ? 'text-yellow-200/40' : ''
-                  }`}>
-                    {prize.position}
-                  </div>
-                  
-                  {prize.position === '1st' && (
-                    <motion.div
-                      className="absolute -top-2 -right-2"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    >
-                      <Sparkles className="text-yellow-300" size={24} fill="currentColor" />
-                    </motion.div>
-                  )}
-                </motion.div>
-              </div>
-
-              {/* Floor Shadow */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-3/4 h-6 bg-black/40 blur-2xl rounded-full" />
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* MOBILE: Vertical Cards - Winner First */}
-      <div className="md:hidden flex flex-col gap-6 max-w-sm mx-auto px-4">
-        {/* Show Winner First, then 2nd, then 3rd */}
-        {[prizes[1], prizes[0], prizes[2]].map((prize, displayIndex) => {
-          const Icon = prize.icon;
-          const originalIndex = prizes.findIndex(p => p.position === prize.position);
-          
-          return (
-            <motion.div
-              key={prize.position}
-              initial={{ opacity: 0, y: 50 }}
+              key={winner.prize}
+              initial={{ opacity: 0, y: 80 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: displayIndex * 0.15 }}
+              transition={{ duration: 0.7, delay: winner.delay, type: 'spring', stiffness: 70 }}
+              className="flex flex-col items-center flex-1 max-w-xs"
             >
+              {/* Card above podium */}
               <motion.div
-                className={`glass-card p-6 flex flex-col items-center text-center border-4 ${prize.ringColor} relative overflow-hidden`}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ y: -8, scale: 1.03 }}
+                className={`relative w-full rounded-2xl border-2 ${winner.ringColor} bg-black/50 backdrop-blur-sm p-4 flex flex-col items-center text-center overflow-hidden shadow-2xl mb-0`}
               >
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${prize.gradient} opacity-10`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${winner.gradient} opacity-10 rounded-2xl`} />
 
-                {/* Crown for Winner */}
-                {prize.position === '1st' && (
+                {/* Crown for 1st */}
+                {isCenter && (
                   <motion.div
-                    className="absolute -top-10 left-1/2 -translate-x-1/2 text-5xl z-10"
-                    animate={{
-                      y: [0, -5, 0],
-                      rotate: [0, 5, -5, 0],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                    }}
+                    className="text-3xl mb-1 relative z-10"
+                    animate={{ y: [0, -6, 0], rotate: [0, 8, -8, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity }}
                   >
                     👑
                   </motion.div>
                 )}
 
-                {/* Position Badge */}
-                <div className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-gradient-to-br ${prize.gradient} flex items-center justify-center text-white font-black text-lg shadow-lg`}>
-                  {originalIndex + 1}
-                </div>
+                {/* Badge emoji */}
+                <motion.div
+                  className={`${isCenter ? 'text-4xl' : 'text-3xl'} mb-1 relative z-10`}
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 2.8, repeat: Infinity, delay: winner.delay }}
+                >
+                  {winner.badge}
+                </motion.div>
 
                 {/* Icon */}
                 <motion.div
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
-                  className="mt-2 mb-4"
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                  className="mb-2 relative z-10"
                 >
-                  <Icon 
-                    size={prize.position === '1st' ? 70 : 60} 
-                    className={`bg-gradient-to-br ${prize.gradient} bg-clip-text text-transparent`}
-                    strokeWidth={1.5}
-                    style={{
-                      filter: 'drop-shadow(0 4px 8px rgba(168, 255, 0, 0.3))',
-                    }}
-                  />
+                  <Icon size={isCenter ? 32 : 24} className={`${winner.textColor}`} strokeWidth={1.5} />
                 </motion.div>
 
-                {/* Amount */}
-                <motion.div 
-                  className={`font-black bg-gradient-to-r ${prize.gradient} bg-clip-text text-transparent mb-3 ${
-                    prize.position === '1st' ? 'text-5xl' : 'text-4xl'
-                  }`}
-                  animate={{
-                    scale: prize.position === '1st' ? [1, 1.05, 1] : [1, 1.03, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
-                >
-                  {prize.amount}
-                </motion.div>
-
-                {/* Rank */}
-                <div className={`text-white font-bold mb-2 ${
-                  prize.position === '1st' ? 'text-xl' : 'text-lg'
-                }`}>
-                  {prize.rank}
+                {/* Prize label */}
+                <div className={`text-xs font-black uppercase tracking-widest mb-1 ${winner.textColor} relative z-10`}>
+                  {winner.prize}
                 </div>
 
-                {/* Position */}
-                <div className="text-gray-400 text-sm font-medium uppercase tracking-wider mb-3">
-                  {prize.position} Position
-                </div>
+                {/* Team name */}
+                <h3 className={`text-white font-black ${isCenter ? 'text-base md:text-xl' : 'text-sm md:text-base'} mb-1 relative z-10 whitespace-pre-line leading-tight`}>
+                  {winner.team}
+                </h3>
 
-                {/* Sparkles for Winner */}
-                {prize.position === '1st' && (
-                  <div className="flex gap-2">
-                    {[...Array(3)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          opacity: [0.5, 1, 0.5],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: i * 0.2,
-                        }}
-                      >
-                        <Sparkles size={14} className="text-yellow-400" fill="currentColor" />
-                      </motion.div>
-                    ))}
-                  </div>
+                {/* College */}
+                {winner.college && (
+                  <p className={`text-xs font-semibold mb-1 ${winner.textColor} relative z-10`}>{winner.college}</p>
                 )}
+
+                {/* Description - only on center */}
+                {isCenter && (
+                  <p className="text-white/60 text-xs leading-relaxed relative z-10 mt-1">{winner.description}</p>
+                )}
+              </motion.div>
+
+              {/* Podium block */}
+              <motion.div
+                initial={{ scaleY: 0 }}
+                animate={inView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.6, delay: winner.delay + 0.3, origin: 'bottom' }}
+                style={{ transformOrigin: 'bottom' }}
+                className={`w-full ${winner.podiumHeight} rounded-t-lg relative overflow-hidden`}
+              >
+                {/* Gradient fill */}
+                <div className={`absolute inset-0 bg-gradient-to-b ${winner.gradient} opacity-80`} />
+                {/* Shine */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-transparent" />
+                {/* Side depth shadow */}
+                <div className="absolute right-0 top-0 bottom-0 w-3 bg-black/25" />
+                {/* Position number */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className={`font-black text-white/40 ${isCenter ? 'text-5xl' : 'text-4xl'}`}>
+                    {winner.position === 'left' ? '2' : winner.position === 'center' ? '1' : '3'}
+                  </span>
+                </div>
               </motion.div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* Confetti Burst on View */}
-      {inView && (
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(50)].map((_, i) => (
+      {/* Podium base platform */}
+      <motion.div
+        initial={{ opacity: 0, scaleX: 0 }}
+        animate={inView ? { opacity: 1, scaleX: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="max-w-4xl mx-auto px-4 mb-16"
+      >
+        <div className="h-4 bg-gradient-to-r from-lime-900/40 via-lime-600/60 to-lime-900/40 rounded-b-xl shadow-lg shadow-lime-500/20" />
+      </motion.div>
+
+      {/* ── WINNER PHOTO ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="max-w-4xl mx-auto px-4 mb-16"
+      >
+        <div className="relative rounded-2xl overflow-hidden border-2 border-lime-400/30 shadow-2xl shadow-lime-400/10">
+          {/* Glow border effect */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-lime-400/10 via-transparent to-yellow-400/10 pointer-events-none z-10" />
+          <img
+            src="/winners.jpg"
+            alt="Agri-Tech Hackathon 2026 Winners - Prize Distribution Ceremony"
+            className="w-full h-auto object-cover rounded-2xl"
+            style={{ filter: 'brightness(1.05) contrast(1.05)' }}
+          />
+          {/* Caption bar */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 z-20">
+            <p className="text-white font-semibold text-sm md:text-base text-center tracking-wide">
+              🏆 Agri-Tech Hackathon 2026 — Prize Distribution Ceremony
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ── SPECIAL AWARDS ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.7 }}
+        className="max-w-4xl mx-auto px-4"
+      >
+        <div className="flex items-center gap-3 justify-center mb-8">
+          <Users size={20} className="text-lime-400" />
+          <h2 className="text-white font-bold text-xl md:text-2xl tracking-wide uppercase">Special Awards</h2>
+          <Users size={20} className="text-lime-400" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {specialAwards.map((award, i) => (
             <motion.div
               key={i}
-              className="absolute w-3 h-3 rounded-full"
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.7 + award.delay }}
+              whileHover={{ y: -6, scale: 1.03 }}
+              className="relative rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 flex flex-col items-center text-center overflow-hidden"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${award.gradient} opacity-5 rounded-xl`} />
+              <span className="text-3xl mb-2 relative z-10">{award.emoji}</span>
+              <div className={`text-xs font-bold uppercase tracking-widest mb-2 bg-gradient-to-r ${award.gradient} bg-clip-text text-transparent relative z-10`}>
+                {award.award}
+              </div>
+              <p className="text-white font-bold text-sm mb-1 relative z-10">{award.team}</p>
+              <p className="text-white/60 text-xs leading-relaxed relative z-10">{award.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Confetti */}
+      {inView && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[...Array(35)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 rounded-full"
               style={{
                 background: ['#a8ff00', '#ffd700', '#ff6b6b', '#4ecdc4', '#fff'][i % 5],
                 left: `${50 + (Math.random() - 0.5) * 60}%`,
-                top: '20%',
+                top: '10%',
               }}
-              initial={{ y: 0, opacity: 1, rotate: 0, scale: 0 }}
+              initial={{ y: 0, opacity: 1, scale: 0 }}
               animate={{
                 y: [0, 600],
                 opacity: [1, 1, 0],
-                rotate: 360 * (Math.random() > 0.5 ? 1 : -1) * Math.random() * 3,
+                rotate: 360 * (Math.random() > 0.5 ? 1 : -1) * 2,
                 scale: [0, 1, 0.5],
-                x: (Math.random() - 0.5) * 400,
+                x: (Math.random() - 0.5) * 300,
               }}
               transition={{
                 duration: 2.5 + Math.random() * 1.5,
-                delay: Math.random() * 0.5,
-                ease: "easeOut",
+                delay: Math.random() * 0.8,
+                ease: 'easeOut',
               }}
             />
           ))}

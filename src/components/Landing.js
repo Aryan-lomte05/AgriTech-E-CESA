@@ -677,12 +677,15 @@ const Landing = () => {
             Hackathon 2026
           </motion.h1>
 
-          {/* Countdown */}
+          {/* Hackathon Ended Badge */}
           <div className="space-y-4 pt-4">
-            <p className="text-xs md:text-sm lg:text-base font-medium tracking-wider text-white/80">
-              HACKATHON STARTS IN
+            <p className="text-xs md:text-sm lg:text-base font-medium tracking-wider text-lime-400/90 uppercase">
+              Hackathon Ended On
             </p>
-            <FlipCountdown />
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-lime-400/50 bg-lime-400/10 backdrop-blur-sm">
+              <span className="text-2xl">🏁</span>
+              <span className="text-white font-bold text-lg md:text-2xl tracking-wide">6th February 2026</span>
+            </div>
           </div>
 
           {/* CTA Button */}
