@@ -10,13 +10,13 @@ const UNSTOP =
   "https://unstop.com/p/agri-tech-hackathon-2027-24-hours-to-hack-the-harvest-k-j-somaiya-college-of-engineering-kjsce-vidyavihar-1792152";
 
 const CHAPTERS = [
-  { plate: "PLATE 01", name: "THE FIELD", mid: "GROUND LEVEL · 1.6 M", sky: ["#f6e2b4", "#e9c98b"], cam: 1.7, scene: "field" },
-  { plate: "PLATE 02", name: "FIVE PLOTS", mid: "NDVI · AERIAL SURVEY", sky: ["#cfe8bd", "#a8cf86"], cam: 62, scene: "field" },
+  { plate: "PLATE 01", name: "THE FIELD", mid: "CANOPY · 5.2 M", sky: ["#f6e2b4", "#e9c98b"], cam: 5.2, scene: "field" },
+  { plate: "PLATE 02", name: "FIVE PLOTS", mid: "NDVI · AERIAL SURVEY", sky: ["#cfe8bd", "#a8cf86"], cam: 74, scene: "field" },
   { plate: "PLATE 03", name: "THE BUILD", mid: "HARDWARE + SOFTWARE", sky: ["#d8eef4", "#aed8e4"], cam: 0, scene: "rig" },
   { plate: "PLATE 04", name: "IN THEIR HANDS", mid: "ADVISORY · MARATHI", sky: ["#e8f0d6", "#cfe3ae"], cam: 0, scene: "phone" },
   { plate: "PLATE 05", name: "LAST EDITION", mid: "REGISTRATIONS · 2026", sky: ["#e2e0f2", "#c2bee0"], cam: 0, scene: "net" },
   { plate: "PLATE 06", name: "THE PURSE", mid: "PURSE · INR", sky: ["#fbe9bd", "#f3cf7c"], cam: 0, scene: "purse" },
-  { plate: "PLATE 07", name: "ROUND 1", mid: "SUBMISSION · OPEN", sky: ["#d9ead2", "#b2d4a8"], cam: 4, scene: "field" },
+  { plate: "PLATE 07", name: "ROUND 1", mid: "SUBMISSION · OPEN", sky: ["#d9ead2", "#b2d4a8"], cam: 6.5, scene: "field" },
 ];
 
 const PLOT_NAMES = [
@@ -81,30 +81,42 @@ export default function Journey() {
     const rnd = (i) => { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); };
     const lerp = (a, b, t) => a + (b - a) * t;
     const hex = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
-    function mixHex(h1, h2, t) {
+    const mixRGB = (h1, h2, t) => {
       const a = hex(h1), b = hex(h2);
-      return `rgb(${Math.round(lerp(a[0], b[0], t))},${Math.round(lerp(a[1], b[1], t))},${Math.round(lerp(a[2], b[2], t))})`;
-    }
+      return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+    };
+    const css = (c) => `rgb(${c[0] | 0},${c[1] | 0},${c[2] | 0})`;
 
-    // One cane field, grouped into 13-unit plots with tracks between them.
-    const PLANTS = [];
+    // Cane in rows running to the horizon, thinning with distance so the near
+    // ground stays dense without paying for plants the eye cannot separate.
+    // Plots are 13 units across with a track between them.
+    let PLANTS = [];
     {
-      const n = Math.round(2600 * DENSITY);
-      for (let i = 0; i < n; i++) {
-        const x = (rnd(i) - 0.5) * 150;
-        const z = 2 + rnd(i + 7919) * 128;
-        const gx = ((x % 13) + 13) % 13, gz = ((z % 13) + 13) % 13;
-        if (gx < 1.1 || gz < 1.1) continue;
-        const plotId = Math.floor(x / 13) * 7 + Math.floor(z / 13) * 13;
-        PLANTS.push({
-          x, z,
-          h: 1.5 + rnd(i + 104729) * 1.5,
-          v: rnd(Math.abs(plotId) + 3301),
-          p: ((Math.abs(plotId) % 5) + 5) % 5,
-          ph: rnd(i + 55543) * 6.283,
-        });
+      const NEAR = 7;
+      const list = [];
+      let i = 0;
+      for (let z = NEAR; z < 170; z += 0.92) {
+        const far = (z - NEAR) / 163;
+        const stepX = 0.8 * (1 + far * 3.4);
+        for (let x = -72; x < 72; x += stepX) {
+          i++;
+          const px = x + (rnd(i) - 0.5) * 0.45;
+          const pz = z + (rnd(i + 7919) - 0.5) * 0.55;
+          const gx = ((px % 13) + 13) % 13, gz = ((pz % 13) + 13) % 13;
+          if (gx < 1.2 || gz < 1.2) continue;
+          const plotId = Math.floor(px / 13) * 7 + Math.floor(pz / 13) * 13;
+          list.push({
+            x: px, z: pz,
+            h: 2.45 + rnd(i + 104729) * 1.15,
+            v: rnd(Math.abs(plotId) + 3301),
+            p: ((Math.abs(plotId) % 5) + 5) % 5,
+            ph: rnd(i + 55543) * 6.283,
+          });
+        }
       }
-      PLANTS.sort((a, b) => b.z - a.z);
+      list.sort((a, b) => a.z - b.z);                  // nearest first
+      PLANTS = list.slice(0, small ? 3400 : 9500);     // trim distance, not foreground
+      PLANTS.sort((a, b) => b.z - a.z);                // then paint far to near
     }
 
     const RAMP = [[203, 56, 36], [245, 153, 38], [250, 219, 77], [143, 199, 64], [23, 127, 61]];
@@ -119,52 +131,75 @@ export default function Journey() {
       ctx.fillRect(x - r / 2, y - r / 2, r, r);
     };
 
+    // The camera sits above the crop looking out, so nothing in the near row
+    // towers over the frame. Ground plane projection: everything converges on
+    // the horizon, and distance dissolves into the sky colour.
     function drawField(camH, aerial) {
-      const horizon = H * (aerial ? 0.16 : 0.46);
-      const fov = H * 0.9, cx = W / 2, s0 = st.current;
+      const horizon = H * (aerial ? 0.22 : 0.52);
+      const fov = H * 0.62, cx = W / 2, s0 = st.current;
+      const fogC = s0.fog || [233, 201, 139];
+
+      // Soil under the crop, so the band reads as ground rather than floating.
+      const soilTop = Math.max(0, horizon);
+      if (soilTop < H) {
+        const gs = ctx.createLinearGradient(0, soilTop, 0, H);
+        gs.addColorStop(0, `rgba(${fogC[0] | 0},${fogC[1] | 0},${fogC[2] | 0},0)`);
+        gs.addColorStop(1, aerial ? "rgba(96,104,46,0.5)" : "rgba(104,78,38,0.42)");
+        ctx.fillStyle = gs;
+        ctx.fillRect(0, soilTop, W, H - soilTop);
+      }
+
       for (let i = 0; i < PLANTS.length; i++) {
         const p = PLANTS[i];
-        if (p.z < 0.4) continue;
         const s = fov / p.z;
         const sx = cx + p.x * s;
-        if (sx < -40 || sx > W + 40) continue;
+        if (sx < -60 || sx > W + 60) continue;
         const baseY = horizon + camH * s;
-        if (baseY < horizon - 10 || baseY > H + 40) continue;
         const topY = horizon + (camH - p.h) * s;
-        const fog = Math.min(1, Math.max(0, (p.z - 25) / 95));
+        if (topY > H + 24 || baseY < horizon - 24) continue;
+        const fog = Math.min(1, Math.max(0, (p.z - 28) / 115));
 
         let col;
         if (aerial) {
           const hot = s0.plot >= 0 && p.p === s0.plot;
           const base = hot ? THEME_RGB[p.p] : ramp(p.v);
-          const dim = hot ? 1 : s0.plot >= 0 ? 0.42 : 1;
+          const dim = hot ? 1 : s0.plot >= 0 ? 0.45 : 1;
           col = [base[0] * dim, base[1] * dim, base[2] * dim];
           if (!hot && s0.plot >= 0) {
-            col = [lerp(col[0], 200, 0.35), lerp(col[1], 205, 0.35), lerp(col[2], 170, 0.35)];
+            col = [lerp(col[0], 198, 0.3), lerp(col[1], 203, 0.3), lerp(col[2], 168, 0.3)];
           }
         } else {
-          const g = 0.2 + p.v * 0.3;
-          col = [70 + p.v * 60, 110 + g * 180, 40 + p.v * 44];
+          const g = p.v;
+          col = [48 + g * 74, 100 + g * 92, 32 + g * 44];
         }
-        col = [lerp(col[0], 232, fog * 0.8), lerp(col[1], 238, fog * 0.8), lerp(col[2], 210, fog * 0.8)];
+        col = [
+          lerp(col[0], fogC[0], fog * 0.94),
+          lerp(col[1], fogC[1], fog * 0.94),
+          lerp(col[2], fogC[2], fog * 0.94),
+        ];
         ctx.strokeStyle = `rgb(${col[0] | 0},${col[1] | 0},${col[2] | 0})`;
 
-        const sway = Math.sin(s0.time * 1.1 + p.ph) * (aerial ? 0.6 : 3.2);
-        const w = Math.max(0.7, Math.min(5, s * 0.06));
+        const sway = Math.sin(s0.time * 1.05 + p.ph) * s * (aerial ? 0.012 : 0.055);
+        const w = Math.max(0.55, Math.min(3.4, s * 0.05));
         ctx.lineWidth = w;
         ctx.beginPath();
         ctx.moveTo(sx, baseY);
-        ctx.lineTo(sx + sway, topY);
+        ctx.quadraticCurveTo(sx + sway * 0.35, lerp(baseY, topY, 0.5), sx + sway, topY);
         ctx.stroke();
-        if (!aerial && s > 9) {
-          const la = Math.max(3, s * 0.1);
-          ctx.lineWidth = Math.max(0.6, w * 0.6);
-          ctx.beginPath();
-          ctx.moveTo(sx + sway * 0.6, lerp(baseY, topY, 0.55));
-          ctx.lineTo(sx + sway * 0.6 - la, lerp(baseY, topY, 0.42));
-          ctx.moveTo(sx + sway * 0.6, lerp(baseY, topY, 0.72));
-          ctx.lineTo(sx + sway * 0.6 + la, lerp(baseY, topY, 0.6));
-          ctx.stroke();
+
+        if (!aerial && s > 16) {
+          const la = s * 0.13;
+          ctx.lineWidth = Math.max(0.5, w * 0.55);
+          for (let k = 0; k < 3; k++) {
+            const t0 = 0.42 + k * 0.19;
+            const dir = k % 2 ? 1 : -1;
+            const ax = sx + sway * t0;
+            const ay = lerp(baseY, topY, t0);
+            ctx.beginPath();
+            ctx.moveTo(ax, ay);
+            ctx.quadraticCurveTo(ax + dir * la * 0.7, ay - la * 0.42, ax + dir * la, ay - la * 0.1);
+            ctx.stroke();
+          }
         }
       }
     }
@@ -439,7 +474,10 @@ export default function Journey() {
       const nxt = CHAPTERS[Math.min(CHAPTERS.length - 1, idx + 1)];
       const blend = local < 0.65 ? 0 : (local - 0.65) / 0.35;
       st.current.cam = cur.scene === "field" && nxt.scene === "field" ? lerp(cur.cam, nxt.cam, blend) : cur.cam;
-      st.current.sky = [mixHex(cur.sky[0], nxt.sky[0], blend), mixHex(cur.sky[1], nxt.sky[1], blend)];
+      const skyTop = mixRGB(cur.sky[0], nxt.sky[0], blend);
+      const skyBot = mixRGB(cur.sky[1], nxt.sky[1], blend);
+      st.current.sky = [css(skyTop), css(skyBot)];
+      st.current.fog = skyBot;
 
       for (let i = 0; i < chRefs.current.length; i++) {
         const el = chRefs.current[i];
@@ -482,7 +520,7 @@ export default function Journey() {
       <div className="grain" aria-hidden="true" />
 
       <div className="chapters">
-        <section className="ch on" ref={(el) => (chRefs.current[0] = el)}>
+        <section className="ch sky-copy on" ref={(el) => (chRefs.current[0] = el)}>
           <div className="wrap">
             <div className="copy">
               <p className="eyebrow">Plate 01 &middot; The field</p>
@@ -500,7 +538,7 @@ export default function Journey() {
           </div>
         </section>
 
-        <section className="ch" ref={(el) => (chRefs.current[1] = el)}>
+        <section className="ch sky-copy" ref={(el) => (chRefs.current[1] = el)}>
           <div className="wrap">
             <div className="copy">
               <p className="eyebrow">Plate 02 &middot; Five plots</p>
@@ -583,7 +621,7 @@ export default function Journey() {
           </div>
         </section>
 
-        <section className="ch" ref={(el) => (chRefs.current[6] = el)}>
+        <section className="ch sky-copy" ref={(el) => (chRefs.current[6] = el)}>
           <div className="wrap">
             <div className="copy">
               <p className="eyebrow">Plate 07 &middot; Round 1</p>

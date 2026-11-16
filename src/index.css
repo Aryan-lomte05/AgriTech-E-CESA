@@ -155,8 +155,11 @@ html.past #world, html.past .grain, html.past .chapters, html.past .instruments 
 .scroll-cue i { width: 1px; height: 30px; background: linear-gradient(var(--leaf-900), transparent); animation: cue 1.8s ease-in-out infinite; transform-origin: top; }
 @keyframes cue { 50% { transform: scaleY(.45); } }
 
+/* Field chapters: copy sits in the clean sky above the crop band. */
+.ch.sky-copy { align-items: flex-start; padding-top: calc(var(--head) + 3vh); }
+
 @media (max-aspect-ratio: 1/1) {
-  .ch { align-items: flex-end; padding-bottom: 4.2rem; }
+  .ch, .ch.sky-copy { align-items: flex-end; padding-top: var(--head); padding-bottom: 4.2rem; }
   .copy { width: 100%; background: rgb(255 253 246 / .92); border-radius: 16px; padding: 1rem 1.1rem; box-shadow: var(--shadow); }
   .ch h1, .ch h2 { font-size: clamp(1.5rem, 6.4vw, 2.1rem); }
   .ch .lead { font-size: .94rem; line-height: 1.45; margin-bottom: .4em; }
