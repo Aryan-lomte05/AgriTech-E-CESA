@@ -1,42 +1,120 @@
+
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "./hooks/useTheme";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
-import Journey from "./components/Journey";
-import Below from "./components/Below";
-import GalleryPage from "./components/GalleryPage";
-import { SiteHeader, SiteFooter, Chicken } from "./components/SiteChrome";
+// Components
+import LoadingScreen from "./components/LoadingScreen";
+import Navbar from "./components/Navbar";
+import Landing from "./components/Landing";
+import About from "./components/About";
+import Domain from "./components/Domain";
+import StatsCounter from "./components/StatsCounter";
+import Timeline from "./components/Timeline";
+import PrizeCards from "./components/PrizeCards";
+import Rules from "./components/Rules";
+// import Sponsors from "./components/Sponsors";
+import Footer from "./components/Footer";
+import Chicken from "./components/Chicken";
+import HarvestEasterEgg from "./components/HarvestEasterEgg";
+import Gallery from "./components/Gallery";
 
-const Home = () => (
+import ProblemStatements from "./components/ProblemStatements";   // ← NEW IMPORT
+import ShortlistedTeams from "./components/ShortlistedTeams";
+
+// Home Page Component
+const HomePage = () => (
   <>
-    <a className="skip" href="#main">Skip to content</a>
-    <SiteHeader />
-    <Journey />
-    <Below />
+    <LoadingScreen />
+    <Navbar />
+
+    <main className="relative">
+      <section id="home">
+        <Landing />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section>
+        <StatsCounter />
+      </section>
+
+      <section id="domains" className="bg-neutral-900">
+        <Domain />
+      </section>
+
+      <section id="timeline" className="bg-neutral-950">
+        <Timeline />
+      </section>
+
+      <section id="prizes" className="bg-neutral-900">
+        <PrizeCards />
+      </section>
+
+      <section id="rules" className="bg-neutral-950">
+        <Rules />
+      </section>
+
+      {/* <section id="sponsors" className="bg-neutral-900">
+        <Sponsors />
+      </section> */}
+    </main>
+
+    <footer id="footer">
+      <Footer />
+    </footer>
+
     <Chicken />
-    <SiteFooter />
+    <HarvestEasterEgg />
   </>
 );
 
-const Gallery = () => (
+// Gallery Page Component
+const GalleryPage = () => (
   <>
-    <a className="skip" href="#main">Skip to content</a>
-    <SiteHeader />
-    <GalleryPage />
-    <Chicken />
-    <SiteFooter />
+
+    <Navbar />
+    <Gallery />
+    <Footer />
   </>
 );
 
-export default function App() {
+// Main App
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-      <Analytics />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="relative min-h-screen bg-neutral-950 overflow-x-hidden">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+
+            {/*NEW ROUTE */}
+            <Route path="/problem-statements" element={
+              <>
+                <Navbar />
+                <ProblemStatements />
+                <Footer />
+              </>
+            } />
+
+            <Route path="/results" element={
+              <>
+                <Navbar />
+                <ShortlistedTeams />
+                <Footer />
+              </>
+            } />
+
+          </Routes>
+          <Analytics />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
+
+export default App;
