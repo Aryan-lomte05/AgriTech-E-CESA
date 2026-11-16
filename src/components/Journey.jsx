@@ -469,7 +469,12 @@ export default function Journey() {
     };
   }, []);
 
-  const goTo = (i) => window.scrollTo({ top: (i + 0.35) * window.innerHeight, behavior: "smooth" });
+  const goTo = (i) => {
+    const space = spaceRef.current;
+    if (!space) return;
+    const total = space.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: (total * (i + 0.35)) / CHAPTERS.length, behavior: "smooth" });
+  };
 
   return (
     <>
